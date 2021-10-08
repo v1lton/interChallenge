@@ -16,7 +16,6 @@
 		BA0CF8B126321D30007BDFC8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0CF89A26321BAE007BDFC8 /* Alamofire.framework */; };
 		BA0CF8B226321D30007BDFC8 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BA0CF89A26321BAE007BDFC8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BA0CF8B92632F566007BDFC8 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CF8B72632F566007BDFC8 /* UserTableViewCell.swift */; };
-		BA0CF8BA2632F566007BDFC8 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA0CF8B82632F566007BDFC8 /* UserTableViewCell.xib */; };
 		BA0CF8C12632F7E3007BDFC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CF8C02632F7E3007BDFC8 /* User.swift */; };
 		BA0CF8CD26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CF8CB26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.swift */; };
 		BA0CF8CE26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA0CF8CC26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.xib */; };
@@ -132,7 +131,6 @@
 		89C29A36270F801100E608FD /* CoordinatorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorNavigationController.swift; sourceTree = "<group>"; };
 		BA0CF88F26321BAE007BDFC8 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		BA0CF8B72632F566007BDFC8 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		BA0CF8B82632F566007BDFC8 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		BA0CF8C02632F7E3007BDFC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BA0CF8CB26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		BA0CF8CC26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleAndDescriptionTableViewCell.xib; sourceTree = "<group>"; };
@@ -270,7 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				BA0CF8B72632F566007BDFC8 /* UserTableViewCell.swift */,
-				BA0CF8B82632F566007BDFC8 /* UserTableViewCell.xib */,
 				89C29A34270F73A800E608FD /* UserContentViewCell.swift */,
 			);
 			path = User;
@@ -524,7 +521,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA0CF8BA2632F566007BDFC8 /* UserTableViewCell.xib in Resources */,
 				BA93F7F82632035A00CE8AFF /* LaunchScreen.storyboard in Resources */,
 				BA93F7F52632035A00CE8AFF /* Assets.xcassets in Resources */,
 				BA0CF8CE26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.xib in Resources */,
