@@ -131,12 +131,14 @@ class UserTableViewCell: UITableViewCell {
         self.albumsButton.setTitle("ÁLBUNS", for: .normal)
         self.albumsButton.setTitleColor(.systemOrange, for: .normal)
         self.albumsButton.titleLabel?.lineBreakMode = .byTruncatingMiddle
+        self.albumsButton.addTarget(self, action: #selector(albumsAction), for: .touchUpInside)
     }
     
     private func setupPostsButtonStyle() {
         self.postsButton.setTitle("POSTAGENS", for: .normal)
         self.postsButton.setTitleColor(.systemOrange, for: .normal)
         self.postsButton.titleLabel?.lineBreakMode = .byTruncatingMiddle
+        self.postsButton.addTarget(self, action: #selector(postsAction), for: .touchUpInside)
     }
     
     
@@ -233,11 +235,11 @@ class UserTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    @IBAction func albumsAction(_ sender: UIButton) {
+    @objc func albumsAction(sender: UIButton!) {
         delegate?.didTapAlbums(with: id, by: nameLabel.text ?? "")
     }
     
-    @IBAction func postsAction(_ sender: UIButton) {
+    @objc func postsAction(sender: UIButton!) {
         delegate?.didTapPosts(with: id, by: nameLabel.text ?? "")
     }
 }
