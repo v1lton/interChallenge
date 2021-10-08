@@ -14,6 +14,7 @@ class UserTableViewCell: UITableViewCell {
     let userNameLabel = UILabel()
     let emailLabel = UILabel()
     let phoneLabel = UILabel()
+    let stackView = UIStackView()
     let albumsButton = UIButton()
     let postsButton = UIButton()
     
@@ -43,6 +44,7 @@ class UserTableViewCell: UITableViewCell {
         self.setupUserNameLabelStyle()
         self.setupEmailLabelStyle()
         self.setupPhoneLabelStyle()
+        self.setupStackViewStyle()
         
         //Constraints
         self.setupInitialsViewConstraints()
@@ -52,6 +54,9 @@ class UserTableViewCell: UITableViewCell {
         self.setupUserNameLabelConstraints()
         self.setupEmailLabelConstraints()
         self.setupPhoneLabelConstraints()
+        self.setupStackViewConstraints()
+        self.setupAlbumsButtonStyle()
+        self.setupPostsButtonStyle()
     }
     
     required init?(coder: NSCoder) {
@@ -114,6 +119,26 @@ class UserTableViewCell: UITableViewCell {
         self.phoneLabel.lineBreakMode = .byTruncatingTail
     }
     
+    private func setupStackViewStyle() {
+        self.stackView.axis = .horizontal
+        self.stackView.alignment = .fill
+        self.stackView.distribution = .fillEqually
+        self.stackView.spacing = 0
+        self.stackView.contentMode = .scaleToFill
+    }
+    
+    private func setupAlbumsButtonStyle() {
+        self.albumsButton.setTitle("ÁLBUNS", for: .normal)
+        self.albumsButton.setTitleColor(.systemOrange, for: .normal)
+        self.albumsButton.titleLabel?.lineBreakMode = .byTruncatingMiddle
+    }
+    
+    private func setupPostsButtonStyle() {
+        self.postsButton.setTitle("POSTAGENS", for: .normal)
+        self.postsButton.setTitleColor(.systemOrange, for: .normal)
+        self.postsButton.titleLabel?.lineBreakMode = .byTruncatingMiddle
+    }
+    
     
     // MARK: - Constraints
     
@@ -156,7 +181,7 @@ class UserTableViewCell: UITableViewCell {
     private func setupUserNameLabelConstraints() {
         self.userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.userNameLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 16),
+            self.userNameLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
             self.userNameLabel.leadingAnchor.constraint(equalTo: self.separatorView.trailingAnchor, constant: 16),
             self.userNameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16)
         ])
@@ -165,7 +190,7 @@ class UserTableViewCell: UITableViewCell {
     private func setupEmailLabelConstraints() {
         self.emailLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.emailLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 16),
+            self.emailLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
             self.emailLabel.leadingAnchor.constraint(equalTo: self.separatorView.trailingAnchor, constant: 16),
             self.emailLabel.topAnchor.constraint(equalTo: self.userNameLabel.bottomAnchor, constant: 24)
         ])
@@ -174,9 +199,20 @@ class UserTableViewCell: UITableViewCell {
     private func setupPhoneLabelConstraints() {
         self.phoneLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.phoneLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 16),
+            self.phoneLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
             self.phoneLabel.leadingAnchor.constraint(equalTo: self.separatorView.trailingAnchor, constant: 16),
             self.phoneLabel.topAnchor.constraint(equalTo: self.emailLabel.bottomAnchor, constant: 24)
+        ])
+    }
+    
+    private func setupStackViewConstraints() {
+        self.stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.stackView.topAnchor.constraint(equalTo: self.phoneLabel.bottomAnchor, constant: 64),
+            self.stackView.topAnchor.constraint(equalTo: self.separatorView.bottomAnchor, constant: 24),
+            self.stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -8),
+            self.stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
+            self.stackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16)
         ])
     }
     
@@ -187,8 +223,9 @@ class UserTableViewCell: UITableViewCell {
         self.contentView.addSubview(userNameLabel)
         self.contentView.addSubview(emailLabel)
         self.contentView.addSubview(phoneLabel)
-        self.contentView.addSubview(albumsButton)
-        self.contentView.addSubview(postsButton)
+        self.contentView.addSubview(stackView)
+        self.stackView.addArrangedSubview(albumsButton)
+        self.stackView.addArrangedSubview(postsButton)
         self.initialsView.addSubview(initialsLabel)
     }
     
