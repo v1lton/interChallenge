@@ -8,8 +8,7 @@ class ChallengeViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Registro da célula UsarTableViewCell
-        //tableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
+        self.tableView.rowHeight = 233
         tableView.register(UserTableViewCell.self, forCellReuseIdentifier: "UserCell")
         fillUsers()
     }
