@@ -18,7 +18,6 @@
 		BA0CF8B92632F566007BDFC8 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CF8B72632F566007BDFC8 /* UserTableViewCell.swift */; };
 		BA0CF8C12632F7E3007BDFC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CF8C02632F7E3007BDFC8 /* User.swift */; };
 		BA0CF8CD26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CF8CB26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.swift */; };
-		BA0CF8CE26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA0CF8CC26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.xib */; };
 		BA0CF8D226334FDB007BDFC8 /* PostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CF8D126334FDB007BDFC8 /* PostTableViewController.swift */; };
 		BA0CF8D626334FF0007BDFC8 /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CF8D526334FF0007BDFC8 /* CommentTableViewController.swift */; };
 		BA0CF8DA26335759007BDFC8 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CF8D926335759007BDFC8 /* Post.swift */; };
@@ -131,7 +130,6 @@
 		BA0CF8B72632F566007BDFC8 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		BA0CF8C02632F7E3007BDFC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BA0CF8CB26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndDescriptionTableViewCell.swift; sourceTree = "<group>"; };
-		BA0CF8CC26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleAndDescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		BA0CF8D126334FDB007BDFC8 /* PostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewController.swift; sourceTree = "<group>"; };
 		BA0CF8D526334FF0007BDFC8 /* CommentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewController.swift; sourceTree = "<group>"; };
 		BA0CF8D926335759007BDFC8 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 			isa = PBXGroup;
 			children = (
 				BA0CF8CB26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.swift */,
-				BA0CF8CC26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.xib */,
 			);
 			path = "Post and Comment";
 			sourceTree = "<group>";
@@ -517,7 +514,6 @@
 			files = (
 				BA93F7F82632035A00CE8AFF /* LaunchScreen.storyboard in Resources */,
 				BA93F7F52632035A00CE8AFF /* Assets.xcassets in Resources */,
-				BA0CF8CE26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.xib in Resources */,
 				BA93F7F32632035800CE8AFF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
