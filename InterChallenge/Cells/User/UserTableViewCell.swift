@@ -7,7 +7,7 @@ protocol UserTableViewCellDelegate: AnyObject {
 
 class UserTableViewCell: UITableViewCell {
     
-    let initialsContainer = UIView()
+    let initialsView = UIView()
     let initialsLabel = UILabel()
     let nameLabel = UILabel()
     let userNameLabel = UILabel()
@@ -33,7 +33,11 @@ class UserTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.buildViewHierarchy()
-        self.setupInitialsLabel()
+        
+        self.setupInitialsViewConstraints()
+        self.setupInitialsViewStyle()
+        
+        self.setupInitialsLabelConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -49,39 +53,44 @@ class UserTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.selectionStyle = .none
     }
+
     
-    fileprivate func setupInitialsLabelStyle() {
-        self.initialsLabel.frame = CGRect(x: 0, y: 0, width: 88, height: 88)
-        self.initialsLabel.backgroundColor = .yellow
+    // MARK: - Styles
+    
+    fileprivate func setupInitialsViewStyle() {
+        self.initialsView.backgroundColor = .systemYellow
     }
     
-    fileprivate func setupInitialsContainer() {
-        self.initialsContainer.translatesAutoresizingMaskIntoConstraints = false
+    
+    // MARK: - Constraints
+    
+    fileprivate func setupInitialsViewConstraints() {
+        self.initialsView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.initialsContainer.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 30),
-            self.initialsContainer.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
-            self.initialsContainer.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor)
+            self.initialsView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16),
+            self.initialsView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20),
+            self.initialsView.heightAnchor.constraint(equalToConstant: 88),
+            self.initialsView.widthAnchor.constraint(equalToConstant: 88)
         ])
-        self.initialsContainer.backgroundColor = .yellow
     }
     
-    fileprivate func setupInitialsLabel() {
+    fileprivate func setupInitialsLabelConstraints() {
         self.initialsLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.initialsLabel.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
-            self.initialsLabel.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor)
+            self.initialsLabel.centerXAnchor.constraint(equalTo: self.initialsView.centerXAnchor),
+            self.initialsLabel.centerYAnchor.constraint(equalTo: self.initialsView.centerYAnchor)
         ])
     }
     
     fileprivate func buildViewHierarchy() {
-        self.addSubview(initialsLabel)
+        self.contentView.addSubview(initialsView)
         self.addSubview(nameLabel)
         self.addSubview(userNameLabel)
         self.addSubview(emailLabel)
         self.addSubview(phoneLabel)
         self.addSubview(albumsButton)
         self.addSubview(postsButton)
-        self.addSubview(initialsContainer)
+        self.initialsView.addSubview(initialsLabel)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
