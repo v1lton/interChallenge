@@ -10,6 +10,7 @@ class UserTableViewCell: UITableViewCell {
     let initialsView = UIView()
     let initialsLabel = UILabel()
     let nameLabel = UILabel()
+    let separatorView = UIView()
     let userNameLabel = UILabel()
     let emailLabel = UILabel()
     let phoneLabel = UILabel()
@@ -34,10 +35,23 @@ class UserTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.buildViewHierarchy()
         
-        self.setupInitialsViewConstraints()
+        //Style
         self.setupInitialsViewStyle()
+        self.setupNameLabelStyle()
+        self.setupSeparatorViewStyle()
+        self.setupNameLabelStyle()
+        self.setupUserNameLabelStyle()
+        self.setupEmailLabelStyle()
+        self.setupPhoneLabelStyle()
         
+        //Constraints
+        self.setupInitialsViewConstraints()
         self.setupInitialsLabelConstraints()
+        self.setupNameLabelConstraints()
+        self.setupSeparatorViewConstraints()
+        self.setupUserNameLabelConstraints()
+        self.setupEmailLabelConstraints()
+        self.setupPhoneLabelConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -57,14 +71,53 @@ class UserTableViewCell: UITableViewCell {
     
     // MARK: - Styles
     
-    fileprivate func setupInitialsViewStyle() {
+    private func setupInitialsViewStyle() {
         self.initialsView.backgroundColor = .systemYellow
+    }
+    
+    private func setupInitialsLabelStyle() {
+        self.initialsLabel.text = "initials"
+        self.initialsLabel.numberOfLines = 0
+        self.initialsLabel.textAlignment = .center
+        self.initialsLabel.lineBreakMode = .byTruncatingTail
+    }
+    
+    private func setupSeparatorViewStyle() {
+        self.separatorView.backgroundColor = .lightGray
+    }
+    
+    private func setupNameLabelStyle() {
+        self.nameLabel.text = "name"
+        self.nameLabel.numberOfLines = 0
+        self.nameLabel.textAlignment = .center
+        self.nameLabel.lineBreakMode = .byTruncatingTail
+    }
+    
+    private func setupUserNameLabelStyle() {
+        self.userNameLabel.text = "username"
+        self.userNameLabel.numberOfLines = 0
+        self.userNameLabel.textAlignment = .natural
+        self.userNameLabel.lineBreakMode = .byTruncatingTail
+    }
+    
+    private func setupEmailLabelStyle() {
+        self.emailLabel.text = "email"
+        self.emailLabel.numberOfLines = 0
+        self.emailLabel.textAlignment = .natural
+        self.emailLabel.lineBreakMode = .byTruncatingTail
+    }
+    
+    private func setupPhoneLabelStyle() {
+        self.phoneLabel.text = "phone"
+        self.phoneLabel.numberOfLines = 0
+        self.phoneLabel.textAlignment = .natural
+        self.phoneLabel.lineBreakMode = .byTruncatingTail
     }
     
     
     // MARK: - Constraints
     
-    fileprivate func setupInitialsViewConstraints() {
+    private func setupInitialsViewConstraints() {
         self.initialsView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.initialsView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16),
@@ -74,7 +127,7 @@ class UserTableViewCell: UITableViewCell {
         ])
     }
     
-    fileprivate func setupInitialsLabelConstraints() {
+    private func setupInitialsLabelConstraints() {
         self.initialsLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.initialsLabel.centerXAnchor.constraint(equalTo: self.initialsView.centerXAnchor),
@@ -82,14 +135,60 @@ class UserTableViewCell: UITableViewCell {
         ])
     }
     
-    fileprivate func buildViewHierarchy() {
+    private func setupNameLabelConstraints() {
+        self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.nameLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
+            self.nameLabel.topAnchor.constraint(equalTo: self.initialsView.bottomAnchor, constant: 16)
+        ])
+    }
+    
+    private func setupSeparatorViewConstraints() {
+        self.separatorView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.separatorView.widthAnchor.constraint(equalToConstant: 2),
+            self.separatorView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
+            self.separatorView.leadingAnchor.constraint(equalTo: self.nameLabel.trailingAnchor, constant: 32),
+            self.separatorView.leadingAnchor.constraint(equalTo: self.initialsView.trailingAnchor, constant: 32)
+        ])
+    }
+    
+    private func setupUserNameLabelConstraints() {
+        self.userNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.userNameLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 16),
+            self.userNameLabel.leadingAnchor.constraint(equalTo: self.separatorView.trailingAnchor, constant: 16),
+            self.userNameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16)
+        ])
+    }
+    
+    private func setupEmailLabelConstraints() {
+        self.emailLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.emailLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 16),
+            self.emailLabel.leadingAnchor.constraint(equalTo: self.separatorView.trailingAnchor, constant: 16),
+            self.emailLabel.topAnchor.constraint(equalTo: self.userNameLabel.bottomAnchor, constant: 24)
+        ])
+    }
+    
+    private func setupPhoneLabelConstraints() {
+        self.phoneLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.phoneLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 16),
+            self.phoneLabel.leadingAnchor.constraint(equalTo: self.separatorView.trailingAnchor, constant: 16),
+            self.phoneLabel.topAnchor.constraint(equalTo: self.emailLabel.bottomAnchor, constant: 24)
+        ])
+    }
+    
+    private func buildViewHierarchy() {
         self.contentView.addSubview(initialsView)
-        self.addSubview(nameLabel)
-        self.addSubview(userNameLabel)
-        self.addSubview(emailLabel)
-        self.addSubview(phoneLabel)
-        self.addSubview(albumsButton)
-        self.addSubview(postsButton)
+        self.contentView.addSubview(nameLabel)
+        self.contentView.addSubview(separatorView)
+        self.contentView.addSubview(userNameLabel)
+        self.contentView.addSubview(emailLabel)
+        self.contentView.addSubview(phoneLabel)
+        self.contentView.addSubview(albumsButton)
+        self.contentView.addSubview(postsButton)
         self.initialsView.addSubview(initialsLabel)
     }
     
