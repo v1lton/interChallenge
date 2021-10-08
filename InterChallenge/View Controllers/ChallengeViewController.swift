@@ -8,6 +8,7 @@ class ChallengeViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Desafio"
         self.tableView.rowHeight = 233
         tableView.register(UserTableViewCell.self, forCellReuseIdentifier: "UserCell")
         fillUsers()
