@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		89C29A2A270F396200E608FD /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C29A29270F396200E608FD /* ChallengeView.swift */; };
+		893A7FE0271091F60038EE78 /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893A7FDF271091F60038EE78 /* AlbumViewModel.swift */; };
+		893A7FE2271092080038EE78 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893A7FE1271092080038EE78 /* PhotoViewModel.swift */; };
+		89C29A2A270F396200E608FD /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C29A29270F396200E608FD /* DetailsView.swift */; };
 		89C29A2D270F3B5500E608FD /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C29A2C270F3B5500E608FD /* UserViewModel.swift */; };
 		89C29A2F270F580500E608FD /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C29A2E270F580500E608FD /* Box.swift */; };
 		89C29A31270F645D00E608FD /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C29A30270F645D00E608FD /* Observable.swift */; };
 		89C29A35270F73A800E608FD /* UserContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C29A34270F73A800E608FD /* UserContentViewCell.swift */; };
 		89C29A37270F801100E608FD /* CoordinatorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C29A36270F801100E608FD /* CoordinatorNavigationController.swift */; };
+		89D965392710CE44006EFC8D /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D965382710CE44006EFC8D /* PostViewModel.swift */; };
+		89D965422710CE4F006EFC8D /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D965412710CE4F006EFC8D /* CommentViewModel.swift */; };
 		BA0CF8B126321D30007BDFC8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0CF89A26321BAE007BDFC8 /* Alamofire.framework */; };
 		BA0CF8B226321D30007BDFC8 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BA0CF89A26321BAE007BDFC8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BA0CF8B92632F566007BDFC8 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CF8B72632F566007BDFC8 /* UserTableViewCell.swift */; };
@@ -32,7 +36,6 @@
 		BA93F7EC2632035800CE8AFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA93F7EB2632035800CE8AFF /* AppDelegate.swift */; };
 		BA93F7EE2632035800CE8AFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA93F7ED2632035800CE8AFF /* SceneDelegate.swift */; };
 		BA93F7F02632035800CE8AFF /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA93F7EF2632035800CE8AFF /* ChallengeViewController.swift */; };
-		BA93F7F32632035800CE8AFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA93F7F12632035800CE8AFF /* Main.storyboard */; };
 		BA93F7F52632035A00CE8AFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA93F7F42632035A00CE8AFF /* Assets.xcassets */; };
 		BA93F7F82632035A00CE8AFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA93F7F62632035A00CE8AFF /* LaunchScreen.storyboard */; };
 		BA93F8032632035A00CE8AFF /* InterChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA93F8022632035A00CE8AFF /* InterChallengeTests.swift */; };
@@ -120,12 +123,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		89C29A29270F396200E608FD /* ChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
+		893A7FDF271091F60038EE78 /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
+		893A7FE1271092080038EE78 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
+		89C29A29270F396200E608FD /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		89C29A2C270F3B5500E608FD /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		89C29A2E270F580500E608FD /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		89C29A30270F645D00E608FD /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		89C29A34270F73A800E608FD /* UserContentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContentViewCell.swift; sourceTree = "<group>"; };
 		89C29A36270F801100E608FD /* CoordinatorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorNavigationController.swift; sourceTree = "<group>"; };
+		89D965382710CE44006EFC8D /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		89D965412710CE4F006EFC8D /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		BA0CF88F26321BAE007BDFC8 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		BA0CF8B72632F566007BDFC8 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		BA0CF8C02632F7E3007BDFC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -145,7 +152,6 @@
 		BA93F7EB2632035800CE8AFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA93F7ED2632035800CE8AFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BA93F7EF2632035800CE8AFF /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
-		BA93F7F22632035800CE8AFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA93F7F42632035A00CE8AFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA93F7F72632035A00CE8AFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA93F7F92632035A00CE8AFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -186,7 +192,7 @@
 		89C29A21270F393E00E608FD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				89C29A29270F396200E608FD /* ChallengeView.swift */,
+				89C29A29270F396200E608FD /* DetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,6 +201,10 @@
 			isa = PBXGroup;
 			children = (
 				89C29A2C270F3B5500E608FD /* UserViewModel.swift */,
+				893A7FDF271091F60038EE78 /* AlbumViewModel.swift */,
+				893A7FE1271092080038EE78 /* PhotoViewModel.swift */,
+				89D965382710CE44006EFC8D /* PostViewModel.swift */,
+				89D965412710CE4F006EFC8D /* CommentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -322,7 +332,6 @@
 				BA0CF8B62632F552007BDFC8 /* Cells */,
 				BA93F7EB2632035800CE8AFF /* AppDelegate.swift */,
 				BA93F7ED2632035800CE8AFF /* SceneDelegate.swift */,
-				BA93F7F12632035800CE8AFF /* Main.storyboard */,
 				BA93F7F42632035A00CE8AFF /* Assets.xcassets */,
 				BA93F7F62632035A00CE8AFF /* LaunchScreen.storyboard */,
 				BA93F7F92632035A00CE8AFF /* Info.plist */,
@@ -514,7 +523,6 @@
 			files = (
 				BA93F7F82632035A00CE8AFF /* LaunchScreen.storyboard in Resources */,
 				BA93F7F52632035A00CE8AFF /* Assets.xcassets in Resources */,
-				BA93F7F32632035800CE8AFF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,10 +547,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89D965392710CE44006EFC8D /* PostViewModel.swift in Sources */,
 				BA0CF8FE26337023007BDFC8 /* Photo.swift in Sources */,
 				BA0CF8F526336DB5007BDFC8 /* PhotoTableViewCell.swift in Sources */,
 				BA0CF8EF26336B59007BDFC8 /* Album.swift in Sources */,
 				BA0CF8C12632F7E3007BDFC8 /* User.swift in Sources */,
+				893A7FE2271092080038EE78 /* PhotoViewModel.swift in Sources */,
 				BA0CF8EB26336B40007BDFC8 /* AlbumTableViewController.swift in Sources */,
 				BA0CF8B92632F566007BDFC8 /* UserTableViewCell.swift in Sources */,
 				BA0CF8D626334FF0007BDFC8 /* CommentTableViewController.swift in Sources */,
@@ -551,14 +561,16 @@
 				89C29A2F270F580500E608FD /* Box.swift in Sources */,
 				89C29A31270F645D00E608FD /* Observable.swift in Sources */,
 				BA0CF9022633764E007BDFC8 /* DetailsViewController.swift in Sources */,
+				893A7FE0271091F60038EE78 /* AlbumViewModel.swift in Sources */,
 				BA93F7F02632035800CE8AFF /* ChallengeViewController.swift in Sources */,
 				89C29A37270F801100E608FD /* CoordinatorNavigationController.swift in Sources */,
 				BA93F7EC2632035800CE8AFF /* AppDelegate.swift in Sources */,
+				89D965422710CE4F006EFC8D /* CommentViewModel.swift in Sources */,
 				BA0CF8DE263358E5007BDFC8 /* Comment.swift in Sources */,
 				89C29A2D270F3B5500E608FD /* UserViewModel.swift in Sources */,
 				BA93F7EE2632035800CE8AFF /* SceneDelegate.swift in Sources */,
 				89C29A35270F73A800E608FD /* UserContentViewCell.swift in Sources */,
-				89C29A2A270F396200E608FD /* ChallengeView.swift in Sources */,
+				89C29A2A270F396200E608FD /* DetailsView.swift in Sources */,
 				BA0CF8DA26335759007BDFC8 /* Post.swift in Sources */,
 				BA0CF8D226334FDB007BDFC8 /* PostTableViewController.swift in Sources */,
 				BA0CF8CD26334BC3007BDFC8 /* TitleAndDescriptionTableViewCell.swift in Sources */,
@@ -597,14 +609,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BA93F7F12632035800CE8AFF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BA93F7F22632035800CE8AFF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BA93F7F62632035A00CE8AFF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
