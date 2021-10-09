@@ -1,19 +1,43 @@
+import Alamofire
 import UIKit
 
 class PhotoTableViewCell: UITableViewCell {
-
+    
     let photoImageView = UIImageView()
     let titleLabel = UILabel()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    weak var viewModel: PhotoViewModel! {
+        didSet {
+            self.titleLabel.text = viewModel.title
+            AF.download(viewModel.thumbnailUrl).responseData { response in
+                switch response.result {
+                case .success(let data):
+                    self.photoImageView.image = UIImage(data: data)
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.contentView.clipsToBounds = true
         self.selectionStyle = .none
         self.setupPhotoImageViewStyle()
         self.setupTitleLabelStryle()
         self.setupPhotoImageViewConstraints()
         self.setupTitleLabelConstraints()
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
