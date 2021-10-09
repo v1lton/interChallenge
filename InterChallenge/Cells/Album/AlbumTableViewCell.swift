@@ -4,11 +4,27 @@ class AlbumTableViewCell: UITableViewCell {
 
     let albumNameLabel = UILabel()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    weak var viewModel: AlbumViewModel! {
+        didSet {
+            self.albumNameLabel.text = viewModel.title
+        }
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.contentView.clipsToBounds = true
         self.selectionStyle = .none
         self.setupAlbumNameLabelStyle()
         self.setupAlbumNameLabelConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -19,6 +35,7 @@ class AlbumTableViewCell: UITableViewCell {
     
     private func setupAlbumNameLabelStyle() {
         self.albumNameLabel.text = "album"
+        self.albumNameLabel.font = UIFont.systemFont(ofSize: 17)
         self.albumNameLabel.textAlignment = .natural
         self.albumNameLabel.numberOfLines = 0
         self.albumNameLabel.lineBreakMode = .byTruncatingTail
