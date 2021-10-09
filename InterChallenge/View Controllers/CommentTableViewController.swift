@@ -5,12 +5,12 @@ class CommentTableViewController: UITableViewController {
     
     var postId = Int()
     var userName = String()
-    var comments = [Comment]()
+    var commentsViewModel = [CommentViewModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Comentários de \(userName)"
-        self.tableView.rowHeight = 97
+        self.tableView.estimatedRowHeight = 97
         tableView.register(TitleAndDescriptionTableViewCell.self, forCellReuseIdentifier: "TitleAndDescriptionCell")
         fillComments(from: postId)
     }
@@ -29,7 +29,7 @@ class CommentTableViewController: UITableViewController {
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([Comment].self, from: data)
-                    self.comments = models
+                    self.commentsViewModel = models.map({return CommentViewModel(comment:$0)})
                     self.tableView.reloadData()
                 }
             } catch {
@@ -39,7 +39,7 @@ class CommentTableViewController: UITableViewController {
    }
 
    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return comments.count
+        return commentsViewModel.count
    }
     
    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,11 +47,14 @@ class CommentTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        let comment = comments[indexPath.row]
-        cell.selectionStyle = .none
-        cell.titleLabel.text = comment.name
-        cell.descriptionLabel.text = comment.body
+        let commentViewModel = commentsViewModel[indexPath.row]
+        cell.viewModel = commentViewModel
 
         return cell
+    }
+    
+    public func setPost(with postId: Int, by userName: String) {
+        self.postId = postId
+        self.userName = userName
     }
 }

@@ -5,12 +5,12 @@ class PhotoTableViewController: UITableViewController {
 
     var albumId = Int()
     var userName = String()
-    var photos = [Photo]()
+    private var photosViewModel = [PhotoViewModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Fotos de \(userName)"
-        self.tableView.rowHeight = 173
+        self.tableView.estimatedRowHeight = 173
         tableView.register(PhotoTableViewCell.self, forCellReuseIdentifier: "PhotoCell")
         fillPhotos(from: albumId)
     }
@@ -29,7 +29,7 @@ class PhotoTableViewController: UITableViewController {
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([Photo].self, from: data)
-                    self.photos = models
+                    self.photosViewModel = models.map({return PhotoViewModel(photo: $0)})
                     self.tableView.reloadData()
                 }
             } catch {
@@ -39,7 +39,7 @@ class PhotoTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return photos.count
+        return photosViewModel.count
     }
 
     
@@ -48,28 +48,18 @@ class PhotoTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        let photo = photos[indexPath.row]
-        cell.titleLabel.text = photo.title
-
-        AF.download(photo.thumbnailUrl).responseData { response in
-            switch response.result {
-            case .success(let data):
-                cell.photoImageView.image = UIImage(data: data)
-            default:
-                break
-            }
-        }
+        let photoViewModel = photosViewModel[indexPath.row]
+        cell.viewModel = photoViewModel
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let photo = photos[indexPath.row]
-        AF.download(photo.url).responseData { response in
+        let photo = photosViewModel[indexPath.row]
+        AF.download(photo.photoUrl).responseData { response in
             switch response.result {
             case .success(let data):
-                self.performSegue(withIdentifier: "photoToDetail",
-                                  sender: (photo: UIImage(data: data), name: photo.title))
+                self.didTapCell(with: UIImage(data: data)!, with: photo.title)
             default:
                 break
             }
@@ -77,13 +67,17 @@ class PhotoTableViewController: UITableViewController {
     }
 
     // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinatinVC = segue.destination as? DetailsViewController {
-            if let info = sender as? (photo: UIImage, name: String) {
-                destinatinVC.photo = info.photo
-                destinatinVC.name = info.name
-            }
-        }
+    
+    //TODO: refatorar esses nomes
+    private func didTapCell(with photo: UIImage, with description: String) {
+        let detailsViewController = DetailsViewController()
+        detailsViewController.setDetails(for: photo, with: description)
+        self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
+    
+    public func setPhoto(with albumId: Int, by userName: String) {
+        self.albumId = albumId
+        self.userName = userName
+    }
+
 }

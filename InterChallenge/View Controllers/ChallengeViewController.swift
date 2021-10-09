@@ -3,13 +3,12 @@ import UIKit
 
 class ChallengeViewController: UITableViewController {
     
-    var users = [User]()
     private var userViewModels = [UserViewModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Desafio"
-        self.tableView.rowHeight = 233
+        self.tableView.estimatedRowHeight = 233
         tableView.register(UserTableViewCell.self, forCellReuseIdentifier: "UserCell")
         fillUsers()
     }
@@ -17,7 +16,6 @@ class ChallengeViewController: UITableViewController {
     // MARK: Table View Configuration
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(userViewModels.count)
         return userViewModels.count
     }
     
@@ -82,12 +80,16 @@ class ChallengeViewController: UITableViewController {
 // Protocolo da UserTableViewDelegate para especificar para onde ir
 extension ChallengeViewController: UserTableViewCellDelegate {
     func didTapAlbums(with userId: Int, by name: String) {
-        let userIdAndName = (id: userId, name: name)
-        performSegue(withIdentifier: "challengeToAlbum", sender: userIdAndName)
+       // let userIdAndName = (id: userId, name: name)
+        let albumTableViewController = AlbumTableViewController()
+        albumTableViewController.setUser(id: userId, name: name)
+        self.navigationController?.pushViewController(albumTableViewController, animated: true)
     }
     
     func didTapPosts(with userId: Int, by name: String) {
-        let userIdAndName = (id: userId, name: name)
-        performSegue(withIdentifier: "challengeToPost", sender: userIdAndName)
+        //let userIdAndName = (id: userId, name: name)
+        let postTableViewController = PostTableViewController()
+        postTableViewController.setUser(id: userId, name: name)
+        self.navigationController?.pushViewController(postTableViewController, animated: true)
     }
 }

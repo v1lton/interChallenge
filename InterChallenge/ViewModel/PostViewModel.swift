@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+class TitleAndDescriptionViewModel {
+    var id: Int = 0
+    var title: String = ""
+    var body: String = ""
+}
+
+class PostViewModel: TitleAndDescriptionViewModel {
+    init(post: Post) {
+        super.init()
+        self.title = post.title
+        self.body = post.body
+        self.id = post.id
+    }
+}

@@ -5,13 +5,13 @@ class PostTableViewController: UITableViewController {
     
     var userId = Int()
     var userName = String()
-    var posts = [Post]()
+    var postsViewModel = [PostViewModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Postagens de \(userName)"
-        tableView.register(UINib(nibName: "TitleAndDescriptionTableViewCell", bundle: nil),
-                           forCellReuseIdentifier: "TitleAndDescriptionCell")
+        self.tableView.estimatedRowHeight = 97
+        tableView.register(TitleAndDescriptionTableViewCell.self, forCellReuseIdentifier: "TitleAndDescriptionCell")
         fillPosts(from: userId)
     }
     
@@ -29,7 +29,7 @@ class PostTableViewController: UITableViewController {
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([Post].self, from: data)
-                    self.posts = models
+                    self.postsViewModel = models.map({return PostViewModel(post:$0)})
                     self.tableView.reloadData()
                 }
             } catch {
@@ -39,7 +39,7 @@ class PostTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return postsViewModel.count
     }
 
     
@@ -48,26 +48,28 @@ class PostTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        let post = posts[indexPath.row]
-        cell.titleLabel.text = post.title
-        cell.descriptionLabel.text = post.body
+        let postViewModel = postsViewModel[indexPath.row]
+        cell.viewModel = postViewModel
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let postId = posts[indexPath.row].id
-        performSegue(withIdentifier: "postToComment", sender: postId)
+        let postId = postsViewModel[indexPath.row].id
+        self.didTapCell(with: postId, by: self.userName)
     }
 
     // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinatoinVC = segue.destination as? CommentTableViewController {
-            if let postId = sender as? Int {
-                destinatoinVC.userName = userName
-                destinatoinVC.postId = postId
-            }
-        }
+    
+    public func setUser(id: Int, name: String) {
+        self.userId = id
+        self.userName = name
+    }
+    
+    // TODO: Create protocol just as UserTableViewCellDelegate
+    func didTapCell(with postId: Int, by userName: String) {
+        let commentTableViewController = CommentTableViewController()
+        commentTableViewController.setPost(with: postId, by: userName)
+        self.navigationController?.pushViewController(commentTableViewController, animated: true)
     }
 }

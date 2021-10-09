@@ -5,12 +5,12 @@ class AlbumTableViewController: UITableViewController {
 
     var userId = Int()
     var userName = String()
-    var albums = [Album]()
+    private var albumsViewModel = [AlbumViewModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Álbuns de \(userName)"
-        self.tableView.rowHeight = 44
+        self.tableView.estimatedRowHeight = 44
         tableView.register(AlbumTableViewCell.self, forCellReuseIdentifier: "AlbumCell")
         fillAlbums(from: userId)
     }
@@ -29,7 +29,7 @@ class AlbumTableViewController: UITableViewController {
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([Album].self, from: data)
-                    self.albums = models
+                    self.albumsViewModel = models.map({return AlbumViewModel(album: $0)})
                     self.tableView.reloadData()
                 }
             } catch {
@@ -39,7 +39,7 @@ class AlbumTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return albums.count
+        return albumsViewModel.count
     }
 
     
@@ -47,26 +47,28 @@ class AlbumTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath) as? AlbumTableViewCell else {
             return UITableViewCell()
         }
-
-        let album = albums[indexPath.row]
-        cell.albumNameLabel.text = album.title
+        
+        let albumViewModel = albumsViewModel[indexPath.row]
+        cell.viewModel = albumViewModel
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let albumId = albums[indexPath.row].id
-        performSegue(withIdentifier: "albumToPhoto", sender: albumId)
+        let albumId = albumsViewModel[indexPath.row].id
+        self.didTapCell(with: albumId, by: self.userName)
     }
 
     // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinatoinVC = segue.destination as? PhotoTableViewController {
-            if let albumId = sender as? Int {
-                destinatoinVC.userName = userName
-                destinatoinVC.albumId = albumId
-            }
-        }
+    
+    public func setUser(id: Int, name: String) {
+        self.userId = id
+        self.userName = name
+    }
+    
+    private func didTapCell(with albumId: Int, by userName: String) {
+        let photoTableViewController = PhotoTableViewController()
+        photoTableViewController.setPhoto(with: albumId, by: userName)
+        self.navigationController?.pushViewController(photoTableViewController, animated: true)
     }
 }
