@@ -82,6 +82,7 @@ class UserTableViewCell: UITableViewCell {
     
     private func setupInitialsLabelStyle() {
         self.initialsLabel.text = "initials"
+        self.initialsLabel.font = UIFont.systemFont(ofSize: 17)
         self.initialsLabel.numberOfLines = 0
         self.initialsLabel.textAlignment = .center
         self.initialsLabel.lineBreakMode = .byTruncatingTail
@@ -93,6 +94,7 @@ class UserTableViewCell: UITableViewCell {
     
     private func setupNameLabelStyle() {
         self.nameLabel.text = "name"
+        self.nameLabel.font = UIFont.systemFont(ofSize: 17)
         self.nameLabel.numberOfLines = 0
         self.nameLabel.textAlignment = .center
         self.nameLabel.lineBreakMode = .byTruncatingTail
@@ -100,6 +102,7 @@ class UserTableViewCell: UITableViewCell {
     
     private func setupUserNameLabelStyle() {
         self.userNameLabel.text = "username"
+        self.userNameLabel.font = UIFont.systemFont(ofSize: 17)
         self.userNameLabel.numberOfLines = 0
         self.userNameLabel.textAlignment = .natural
         self.userNameLabel.lineBreakMode = .byTruncatingTail
@@ -107,6 +110,7 @@ class UserTableViewCell: UITableViewCell {
     
     private func setupEmailLabelStyle() {
         self.emailLabel.text = "email"
+        self.userNameLabel.font = UIFont.systemFont(ofSize: 17)
         self.emailLabel.numberOfLines = 0
         self.emailLabel.textAlignment = .natural
         self.emailLabel.lineBreakMode = .byTruncatingTail
@@ -114,6 +118,7 @@ class UserTableViewCell: UITableViewCell {
     
     private func setupPhoneLabelStyle() {
         self.phoneLabel.text = "phone"
+        self.phoneLabel.font = UIFont.systemFont(ofSize: 17)
         self.phoneLabel.numberOfLines = 0
         self.phoneLabel.textAlignment = .natural
         self.phoneLabel.lineBreakMode = .byTruncatingTail
@@ -130,6 +135,7 @@ class UserTableViewCell: UITableViewCell {
     private func setupAlbumsButtonStyle() {
         self.albumsButton.setTitle("ÁLBUNS", for: .normal)
         self.albumsButton.setTitleColor(.systemOrange, for: .normal)
+        self.albumsButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         self.albumsButton.titleLabel?.lineBreakMode = .byTruncatingMiddle
         self.albumsButton.addTarget(self, action: #selector(albumsAction), for: .touchUpInside)
     }
@@ -137,6 +143,7 @@ class UserTableViewCell: UITableViewCell {
     private func setupPostsButtonStyle() {
         self.postsButton.setTitle("POSTAGENS", for: .normal)
         self.postsButton.setTitleColor(.systemOrange, for: .normal)
+        self.postsButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         self.postsButton.titleLabel?.lineBreakMode = .byTruncatingMiddle
         self.postsButton.addTarget(self, action: #selector(postsAction), for: .touchUpInside)
     }
