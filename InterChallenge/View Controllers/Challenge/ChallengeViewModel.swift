@@ -16,7 +16,6 @@ class ChallengeViewModel {
     }
     
     private func fillUsers() {
-        //Talvez aqui vá um [weak self]
         AF.request("https://jsonplaceholder.typicode.com/users").validate().responseJSON { response in
             guard response.error == nil else {
 //                let alert = UIAlertController(title: "Erro", message: "Algo errado aconteceu. Tente novamente mais tarde.", preferredStyle: .alert)

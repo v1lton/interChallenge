@@ -29,7 +29,7 @@ class TitleAndDescriptionTableViewCell: UITableViewCell {
         return label
     }()
     
-    weak var viewModel: TitleAndDescriptionViewModel! {
+    weak var viewModel: TitleAndDescriptionCellViewModel! {
         didSet {
             self.titleLabel.text = viewModel.title
             self.descriptionLabel.text = viewModel.body

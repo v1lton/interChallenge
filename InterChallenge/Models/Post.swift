@@ -1,6 +1,6 @@
 import Foundation
 
-struct Post: Codable {
+struct Post: Codable, TitleAndDescriptionModelProtocol {
     let id: Int
     let userId: Int
     let title: String

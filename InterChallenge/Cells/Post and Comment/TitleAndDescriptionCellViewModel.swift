@@ -7,17 +7,14 @@
 
 import Foundation
 
-class TitleAndDescriptionViewModel {
+class TitleAndDescriptionCellViewModel {
     var id: Int = 0
     var title: String = ""
     var body: String = ""
-}
-
-class TitleAndDescriptionCellViewModel: TitleAndDescriptionViewModel {
-    init(post: Post) {
-        super.init()
-        self.title = post.title
-        self.body = post.body
-        self.id = post.id
+    
+    init(model: TitleAndDescriptionModelProtocol) {
+        self.id = model.id
+        self.title = model.title
+        self.body = model.body
     }
 }

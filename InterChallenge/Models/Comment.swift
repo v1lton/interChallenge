@@ -1,12 +1,13 @@
 import Foundation
 
-struct Comment: Codable {
+struct Comment: Codable, TitleAndDescriptionModelProtocol {
     let id: Int
     let postId: Int
-    let name: String
+    let title: String
     let body: String
     
     enum CodingKeys: String, CodingKey {
-        case id, postId, name, body
+        case id, postId, body
+        case title = "name"
     }
 }

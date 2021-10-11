@@ -11,7 +11,7 @@ import Foundation
 class CommentViewModel {
     var postId = Observable<Int>(value: 0)
     var userName = Observable<String>(value: "")
-    var commentViewModels = Observable<[CommentCellViewModel]>(value: [])
+    var commentViewModels = Observable<[TitleAndDescriptionCellViewModel]>(value: [])
     
     init(with postId: Int, by userName: String) {
         self.postId.value = postId
@@ -33,7 +33,7 @@ class CommentViewModel {
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([Comment].self, from: data)
-                    self.commentViewModels.value = models.map({return CommentCellViewModel(comment:$0)})
+                    self.commentViewModels.value = models.map({return TitleAndDescriptionCellViewModel(model:$0)})
                 }
             } catch {
                 print("Error during JSON serialization: \(error.localizedDescription)")

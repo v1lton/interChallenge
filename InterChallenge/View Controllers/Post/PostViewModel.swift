@@ -34,7 +34,7 @@ class PostViewModel {
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([Post].self, from: data)
-                    self.postViewModels.value = models.map({return TitleAndDescriptionCellViewModel(post:$0)})
+                    self.postViewModels.value = models.map({return TitleAndDescriptionCellViewModel(model:$0)})
                 }
             } catch {
                 print("Error during JSON serialization: \(error.localizedDescription)")
