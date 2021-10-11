@@ -12,7 +12,7 @@ class TitleAndDescriptionCellViewModel {
     var title: String = ""
     var body: String = ""
     
-    init(model: TitleAndDescriptionModelProtocol) {
+    init(model: TitleAndDescription) {
         self.id = model.id
         self.title = model.title
         self.body = model.body
