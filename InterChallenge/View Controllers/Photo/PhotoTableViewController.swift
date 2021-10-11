@@ -56,24 +56,16 @@ class PhotoTableViewController: UITableViewController {
         return cell
     }
     
-    //TODO: Quem tem que ficar responsável por isso é o viewModel da célula details. Eu só preciso enviar o Data
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let photo = viewModel.photoViewModels.value[indexPath.row]
-        AF.download(photo.photoUrl).responseData { response in
-            switch response.result {
-            case .success(let data):
-                self.didTapCell(with: UIImage(data: data)!, with: photo.title)
-            default:
-                break
-            }
-        }
+        self.didTapCell(with: photo.photoUrl, by: photo.title)
     }
 
     // MARK: - Navigation
     
     //TODO: refatorar esses nomes
-    private func didTapCell(with photo: UIImage, with description: String) {
-        let detailsViewController = DetailsViewController(viewModel: DetailsViewModel(with: photo, by: description))
+    private func didTapCell(with photoUrl: String, by description: String) {
+        let detailsViewController = DetailsViewController(viewModel: DetailsViewModel(with: photoUrl, by: description))
         self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
     

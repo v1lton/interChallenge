@@ -27,7 +27,7 @@ class DetailsView: UIView {
     
     func setup(viewModel: DetailsViewModel) {
         self.backgroundColor = .white
-        self.detailsImageView.image = viewModel.photo.value
+        self.detailsImageView.image = UIImage(data: viewModel.photoData.value)
         self.nameLabel.text = viewModel.name.value
     }
     

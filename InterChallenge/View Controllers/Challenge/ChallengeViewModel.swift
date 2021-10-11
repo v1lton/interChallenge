@@ -9,7 +9,6 @@ import Alamofire
 import Foundation
 
 class ChallengeViewModel {
-    //var userViewModels = [UserCellViewModel]()
     var userViewModels = Observable<[UserCellViewModel]>(value: [])
     
     init() {

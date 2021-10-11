@@ -1,8 +1,7 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-    //lazy var detailsView = DetailsView()
-    var photoUrl = String()
+    var detailsView = DetailsView()
     var photo = UIImage()
     var name = String()
     var viewModel: DetailsViewModel!
@@ -20,22 +19,17 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Detalhes"
         self.initBinding()
-        //detailsView.detailsImageView.image = photo
-       // detailsView.nameLabel.text = name
-        //detailsView.backgroundColor = .white
-        //self.view = detailsView
     }
     
     override func loadView() {
-        let detailsView = DetailsView()
-        detailsView.setup(viewModel: self.viewModel)
+        self.detailsView.setup(viewModel: self.viewModel)
         self.view = detailsView
     }
     
     func initBinding() {
         
-        viewModel.photo.addObserver { [weak self] (photo) in
-            self?.photo = photo
+        viewModel.photoData.addObserver(fireNow: false) { [weak self] (photoData) in
+            self?.detailsView.detailsImageView.image = UIImage(data: photoData) ?? UIImage()
         }
         
         viewModel.name.addObserver { [weak self] (name) in

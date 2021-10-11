@@ -7,17 +7,29 @@
 
 import Alamofire
 import Foundation
-import UIKit
 
 class DetailsViewModel {
     
     var photoUrl = Observable<String>(value: "")
-    var photo = Observable<UIImage>(value: UIImage())
+    var photoData = Observable<Data>(value: Data())
     var name = Observable<String>(value: "")
     
-    init(with photo: UIImage, by name: String) {
-        self.photo.value = photo
-        //self.photoUrl.value = userName
+    init(with photoUrl: String, by name: String) {
+        self.photoUrl.value = photoUrl
         self.name.value = name
+        self.downloadPhotoData(for: photoUrl)
     }
+    
+    func downloadPhotoData(for url: String) {
+        AF.download(url).responseData { response in
+            switch response.result {
+            case .success(let data):
+                self.photoData.value = data
+            default:
+                break
+            }
+        }
+    }
+    
+    
 }
