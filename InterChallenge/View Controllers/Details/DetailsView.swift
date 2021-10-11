@@ -15,10 +15,10 @@ class DetailsView: UIView {
     
     public init() {
         super.init(frame: .zero)
+        self.setupConstraints()
         self.setupDetailImageViewStyle()
         self.setupNameLabelViewStyle()
-        self.setupDetailImageViewConstraints()
-        self.setupNameLabelConstraints()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -42,6 +42,15 @@ class DetailsView: UIView {
         self.nameLabel.numberOfLines = 0
         self.nameLabel.lineBreakMode = .byTruncatingTail
         self.nameLabel.textAlignment = .natural
+    }
+    
+    
+}
+
+extension DetailsView: ViewConstraints {
+    func setupConstraints() {
+        self.setupDetailImageViewConstraints()
+        self.setupNameLabelConstraints()
     }
     
     private func setupDetailImageViewConstraints() {

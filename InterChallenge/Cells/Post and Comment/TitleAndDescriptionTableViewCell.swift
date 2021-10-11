@@ -48,7 +48,7 @@ class TitleAndDescriptionTableViewCell: UITableViewCell {
 
 }
 
-extension TitleAndDescriptionTableViewCell: CellConfigurable {
+extension TitleAndDescriptionTableViewCell: ViewConstraints {
     
     func setupConstraints() {
         self.setupTitleLabelConstraints()

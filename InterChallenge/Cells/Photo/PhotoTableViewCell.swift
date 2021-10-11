@@ -53,7 +53,7 @@ class PhotoTableViewCell: UITableViewCell {
     
 }
 
-extension PhotoTableViewCell: CellConfigurable {
+extension PhotoTableViewCell: ViewConstraints {
     
     func setupConstraints() {
         self.setupPhotoImageViewConstraints()

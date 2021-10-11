@@ -170,7 +170,7 @@ class UserTableViewCell: UITableViewCell {
     }
 }
 
-extension UserTableViewCell: CellConfigurable {
+extension UserTableViewCell: ViewConstraints {
     
     func setupConstraints() {
         self.setupInitialsViewConstraints()

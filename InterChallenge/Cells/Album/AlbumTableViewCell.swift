@@ -33,7 +33,7 @@ class AlbumTableViewCell: UITableViewCell {
     
 }
 
-extension AlbumTableViewCell: CellConfigurable {
+extension AlbumTableViewCell: ViewConstraints {
     func setupConstraints() {
         self.setupAlbumNameLabelConstraints()
     }
