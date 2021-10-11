@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MainCoordinator: Coordinator {
+class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {

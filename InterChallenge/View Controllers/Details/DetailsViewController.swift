@@ -5,7 +5,7 @@ class DetailsViewController: UIViewController {
     var photo = UIImage()
     var name = String()
     var viewModel: DetailsViewModel!
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: AppCoordinator?
     
     init(viewModel: DetailsViewModel) {
         super.init(nibName: nil, bundle: nil)

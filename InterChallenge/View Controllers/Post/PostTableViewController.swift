@@ -6,7 +6,7 @@ class PostTableViewController: UITableViewController {
     var userId = Int()
     var userName = String()
     var viewModel: PostViewModel!
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: AppCoordinator?
     
     init(viewModel: PostViewModel) {
         super.init(style: .plain)

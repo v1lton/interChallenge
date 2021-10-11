@@ -4,7 +4,7 @@ import UIKit
 class ChallengeViewController: UITableViewController {
     
     var viewModel: ChallengeViewModel = ChallengeViewModel()
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: AppCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()

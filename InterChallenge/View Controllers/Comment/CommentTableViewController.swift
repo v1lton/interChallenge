@@ -6,7 +6,7 @@ class CommentTableViewController: UITableViewController {
     var postId = Int()
     var userName = String()
     var viewModel: CommentViewModel!
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: AppCoordinator?
     
     init(viewModel: CommentViewModel) {
         super.init(style: .plain)

@@ -6,7 +6,7 @@ class AlbumTableViewController: UITableViewController {
     var userId = Int()
     var userName = String()
     var viewModel: AlbumViewModel!
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: AppCoordinator?
     
     init(viewModel: AlbumViewModel) {
         super.init(style: .plain)

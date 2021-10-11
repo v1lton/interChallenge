@@ -8,7 +8,7 @@ class PhotoTableViewController: UITableViewController {
     var albumId = Int()
     var userName = String()
     var viewModel: PhotoViewModel!
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: AppCoordinator?
     
     init(viewModel: PhotoViewModel) {
         super.init(style: .plain)
