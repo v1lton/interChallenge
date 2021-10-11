@@ -1,10 +1,21 @@
 import UIKit
 
 class AlbumTableViewCell: UITableViewCell {
-
-    let albumNameLabel = UILabel()
     
-    weak var viewModel: AlbumViewModel! {
+    lazy var albumNameLabel: UILabel = {
+        let label = UILabel()
+        label.accessibilityIdentifier = "albumNameLabel"
+        self.contentView.addSubview(label)
+        
+        label.text = "album"
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.textAlignment = .natural
+        label.numberOfLines = 0
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
+    
+    weak var viewModel: AlbumCellViewModel! {
         didSet {
             self.albumNameLabel.text = viewModel.title
         }
@@ -12,37 +23,22 @@ class AlbumTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.contentView.clipsToBounds = true
         self.selectionStyle = .none
-        self.setupAlbumNameLabelStyle()
-        self.setupAlbumNameLabelConstraints()
+        self.setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.selectionStyle = .none
-    }
+}
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    private func setupAlbumNameLabelStyle() {
-        self.albumNameLabel.text = "album"
-        self.albumNameLabel.font = UIFont.systemFont(ofSize: 17)
-        self.albumNameLabel.textAlignment = .natural
-        self.albumNameLabel.numberOfLines = 0
-        self.albumNameLabel.lineBreakMode = .byTruncatingTail
+extension AlbumTableViewCell: CellConfigurable {
+    func setupConstraints() {
+        self.setupAlbumNameLabelConstraints()
     }
     
     private func setupAlbumNameLabelConstraints() {
-        self.contentView.addSubview(albumNameLabel)
         self.albumNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.albumNameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16),
@@ -51,5 +47,4 @@ class AlbumTableViewCell: UITableViewCell {
             self.albumNameLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16)
         ])
     }
-    
 }

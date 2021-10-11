@@ -3,10 +3,30 @@ import UIKit
 
 class PhotoTableViewCell: UITableViewCell {
     
-    let photoImageView = UIImageView()
-    let titleLabel = UILabel()
+    lazy var photoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.accessibilityIdentifier = "photoImageView"
+        self.contentView.addSubview(imageView)
+        
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        return imageView
+    }()
     
-    weak var viewModel: PhotoViewModel! {
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.accessibilityIdentifier = "titleLabel"
+        self.contentView.addSubview(label)
+        
+        label.text = "title"
+        label.textAlignment = .natural
+        label.numberOfLines = 5
+        label.baselineAdjustment = .alignBaselines
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
+    
+    weak var viewModel: PhotoCellViewModel! {
         didSet {
             self.titleLabel.text = viewModel.title
             AF.download(viewModel.thumbnailUrl).responseData { response in
@@ -24,39 +44,23 @@ class PhotoTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.contentView.clipsToBounds = true
         self.selectionStyle = .none
-        self.setupPhotoImageViewStyle()
-        self.setupTitleLabelStryle()
-        self.setupPhotoImageViewConstraints()
-        self.setupTitleLabelConstraints()
+        self.setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+}
+
+extension PhotoTableViewCell: CellConfigurable {
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
-    private func setupPhotoImageViewStyle(){
-        self.photoImageView.contentMode = .scaleAspectFit
-        self.photoImageView.clipsToBounds = true
-    }
-    
-    private func setupTitleLabelStryle() {
-        self.titleLabel.text = "title"
-        self.titleLabel.textAlignment = .natural
-        self.titleLabel.numberOfLines = 5
-        self.titleLabel.baselineAdjustment = .alignBaselines
-        self.titleLabel.lineBreakMode = .byTruncatingTail
+    func setupConstraints() {
+        self.setupPhotoImageViewConstraints()
+        self.setupTitleLabelConstraints()
     }
     
     private func setupPhotoImageViewConstraints() {
-        self.contentView.addSubview(photoImageView)
         self.photoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.photoImageView.widthAnchor.constraint(equalToConstant: 150),
@@ -68,7 +72,6 @@ class PhotoTableViewCell: UITableViewCell {
     }
     
     private func setupTitleLabelConstraints() {
-        self.contentView.addSubview(titleLabel)
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.titleLabel.leadingAnchor.constraint(equalTo: self.photoImageView.trailingAnchor, constant: 16),
@@ -77,4 +80,5 @@ class PhotoTableViewCell: UITableViewCell {
         ])
         
     }
+    
 }

@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+//TODO: Make ViewConstraintsConfigurable to be use by DetailsView
+protocol CellConfigurable {
+    func setupConstraints()
+}

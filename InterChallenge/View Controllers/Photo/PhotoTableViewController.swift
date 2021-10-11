@@ -1,45 +1,47 @@
 import Alamofire
 import UIKit
 
+//TODO: conformar ao protocolo
+
 class PhotoTableViewController: UITableViewController {
 
     var albumId = Int()
     var userName = String()
-    private var photosViewModel = [PhotoCellViewModel]()
+    var viewModel: PhotoViewModel!
+    
+    init(viewModel: PhotoViewModel) {
+        super.init(style: .plain)
+        self.viewModel = viewModel
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Fotos de \(userName)"
         self.tableView.estimatedRowHeight = 173
         tableView.register(PhotoTableViewCell.self, forCellReuseIdentifier: "PhotoCell")
-        fillPhotos(from: albumId)
+        self.initBinding()
     }
     
-    private func fillPhotos(from albumId: Int) {
-        AF.request("https://jsonplaceholder.typicode.com/photos?albumId=\(albumId)").validate().responseJSON { response in
-            guard response.error == nil else {
-                let alert = UIAlertController(title: "Erro", message: "Algo errado aconteceu. Tente novamente mais tarde.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
-                    alert.dismiss(animated: true)
-                }))
-                self.present(alert, animated: true)
-                return
-            }
-            
-            do {
-                if let data = response.data {
-                    let models = try JSONDecoder().decode([Photo].self, from: data)
-                    self.photosViewModel = models.map({return PhotoCellViewModel(photo: $0)})
-                    self.tableView.reloadData()
-                }
-            } catch {
-                print("Error during JSON serialization: \(error.localizedDescription)")
-            }
+    func initBinding() {
+        viewModel.photoViewModels.addObserver(fireNow: false) { [weak self] (pgotoViewModels) in
+            self?.tableView.reloadData()
+        }
+        
+        viewModel.albumId.addObserver { [weak self] (albumId) in
+            self?.albumId = albumId
+        }
+        
+        viewModel.userName.addObserver { [weak self] (userName) in
+            self?.userName = userName
+            self?.navigationItem.title = "Fotos de \(userName)"
         }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return photosViewModel.count
+        return viewModel.photoViewModels.value.count
     }
 
     
@@ -48,14 +50,15 @@ class PhotoTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        let photoViewModel = photosViewModel[indexPath.row]
+        let photoViewModel = viewModel.photoViewModels.value[indexPath.row]
         cell.viewModel = photoViewModel
         
         return cell
     }
     
+    //TODO: Quem tem que ficar responsável por isso é o viewModel da célula details. Eu só preciso enviar o Data
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let photo = photosViewModel[indexPath.row]
+        let photo = viewModel.photoViewModels.value[indexPath.row]
         AF.download(photo.photoUrl).responseData { response in
             switch response.result {
             case .success(let data):
@@ -70,14 +73,8 @@ class PhotoTableViewController: UITableViewController {
     
     //TODO: refatorar esses nomes
     private func didTapCell(with photo: UIImage, with description: String) {
-        let detailsViewController = DetailsViewController()
-        detailsViewController.setDetails(for: photo, with: description)
+        let detailsViewController = DetailsViewController(viewModel: DetailsViewModel(with: photo, by: description))
         self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
     
-    public func setPhoto(with albumId: Int, by userName: String) {
-        self.albumId = albumId
-        self.userName = userName
-    }
-
 }

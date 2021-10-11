@@ -1,26 +1,33 @@
 import UIKit
 
 class TitleAndDescriptionTableViewCell: UITableViewCell {
-
-    let titleLabel = UILabel()
-    let descriptionLabel = UILabel()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.selectionStyle = .none
-        self.setupTitleLabelStyle()
-        self.setupDescriptionLabelStyle()
-        self.setupTitleLabelConstraints()
-        self.setupDescriptionLabelConstraints()
-    }
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.accessibilityIdentifier = "titleLabel"
+        self.contentView.addSubview(label)
+        
+        label.text = "title"
+        label.font = UIFont.systemFont(ofSize: 21)
+        label.baselineAdjustment = .alignBaselines
+        label.textAlignment = .natural
+        label.numberOfLines = 2
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+    lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.accessibilityIdentifier = "descriptionLabel"
+        self.contentView.addSubview(label)
+        
+        label.text = "description"
+        label.baselineAdjustment = .alignBaselines
+        label.textAlignment = .natural
+        label.numberOfLines = 0
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
     
     weak var viewModel: TitleAndDescriptionViewModel! {
         didSet {
@@ -29,26 +36,26 @@ class TitleAndDescriptionTableViewCell: UITableViewCell {
         }
     }
     
-    private func setupTitleLabelStyle() {
-        self.titleLabel.text = "title"
-        self.titleLabel.font = UIFont.systemFont(ofSize: 21)
-        self.titleLabel.baselineAdjustment = .alignBaselines
-        self.titleLabel.textAlignment = .natural
-        self.titleLabel.numberOfLines = 2
-        self.titleLabel.lineBreakMode = .byTruncatingTail
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
+        self.setupConstraints()
     }
     
-    private func setupDescriptionLabelStyle() {
-        self.descriptionLabel.text = "description"
-        self.descriptionLabel.baselineAdjustment = .alignBaselines
-        self.descriptionLabel.textAlignment = .natural
-        self.descriptionLabel.numberOfLines = 0
-        self.descriptionLabel.lineBreakMode = .byTruncatingTail
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+}
+
+extension TitleAndDescriptionTableViewCell: CellConfigurable {
     
+    func setupConstraints() {
+        self.setupTitleLabelConstraints()
+        self.setupDescriptionLabelConstraints()
     }
     
     private func setupTitleLabelConstraints() {
-        self.contentView.addSubview(titleLabel)
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
@@ -58,7 +65,6 @@ class TitleAndDescriptionTableViewCell: UITableViewCell {
     }
     
     private func setupDescriptionLabelConstraints() {
-        self.contentView.addSubview(descriptionLabel)
         self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.descriptionLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
@@ -67,4 +73,5 @@ class TitleAndDescriptionTableViewCell: UITableViewCell {
             self.descriptionLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -8)
         ])
     }
+    
 }
