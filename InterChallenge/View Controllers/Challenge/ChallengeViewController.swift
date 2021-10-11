@@ -3,7 +3,7 @@ import UIKit
 
 class ChallengeViewController: UITableViewController {
     
-    private var userViewModels = [UserViewModel]()
+    private var userViewModels = [UserCellViewModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,7 @@ class ChallengeViewController: UITableViewController {
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([User].self, from: data)
-                    self.userViewModels = models.map({return UserViewModel(user: $0)})
+                    self.userViewModels = models.map({return UserCellViewModel(user: $0)})
                     self.tableView.reloadData()
                 }
             } catch {
@@ -77,17 +77,14 @@ class ChallengeViewController: UITableViewController {
     }
 }
 
-// Protocolo da UserTableViewDelegate para especificar para onde ir
 extension ChallengeViewController: UserTableViewCellDelegate {
     func didTapAlbums(with userId: Int, by name: String) {
-       // let userIdAndName = (id: userId, name: name)
         let albumTableViewController = AlbumTableViewController()
         albumTableViewController.setUser(id: userId, name: name)
         self.navigationController?.pushViewController(albumTableViewController, animated: true)
     }
     
     func didTapPosts(with userId: Int, by name: String) {
-        //let userIdAndName = (id: userId, name: name)
         let postTableViewController = PostTableViewController()
         postTableViewController.setUser(id: userId, name: name)
         self.navigationController?.pushViewController(postTableViewController, animated: true)

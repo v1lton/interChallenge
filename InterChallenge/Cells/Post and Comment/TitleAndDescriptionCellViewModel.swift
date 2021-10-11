@@ -13,7 +13,7 @@ class TitleAndDescriptionViewModel {
     var body: String = ""
 }
 
-class PostViewModel: TitleAndDescriptionViewModel {
+class TitleAndDescriptionCellViewModel: TitleAndDescriptionViewModel {
     init(post: Post) {
         super.init()
         self.title = post.title

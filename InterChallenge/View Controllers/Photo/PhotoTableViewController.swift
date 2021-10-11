@@ -5,7 +5,7 @@ class PhotoTableViewController: UITableViewController {
 
     var albumId = Int()
     var userName = String()
-    private var photosViewModel = [PhotoViewModel]()
+    private var photosViewModel = [PhotoCellViewModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class PhotoTableViewController: UITableViewController {
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([Photo].self, from: data)
-                    self.photosViewModel = models.map({return PhotoViewModel(photo: $0)})
+                    self.photosViewModel = models.map({return PhotoCellViewModel(photo: $0)})
                     self.tableView.reloadData()
                 }
             } catch {

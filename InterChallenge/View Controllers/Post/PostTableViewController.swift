@@ -65,8 +65,9 @@ class PostTableViewController: UITableViewController {
         self.userId = id
         self.userName = name
     }
-    
-    // TODO: Create protocol just as UserTableViewCellDelegate
+}
+
+extension PostTableViewController: TableViewRowNavigable {
     func didTapCell(with postId: Int, by userName: String) {
         let commentTableViewController = CommentTableViewController()
         commentTableViewController.setPost(with: postId, by: userName)

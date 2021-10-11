@@ -25,6 +25,12 @@ class DetailsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setup(viewModel: DetailsViewModel) {
+        self.backgroundColor = .white
+        self.detailsImageView.image = viewModel.photo.value
+        self.nameLabel.text = viewModel.name.value
+    }
+    
     private func setupDetailImageViewStyle() {
         self.detailsImageView.contentMode = .scaleAspectFit
         self.detailsImageView.clipsToBounds = true

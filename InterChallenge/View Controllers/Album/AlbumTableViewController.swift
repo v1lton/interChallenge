@@ -5,7 +5,7 @@ class AlbumTableViewController: UITableViewController {
 
     var userId = Int()
     var userName = String()
-    private var albumsViewModel = [AlbumViewModel]()
+    private var albumsViewModel = [AlbumCellViewModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class AlbumTableViewController: UITableViewController {
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([Album].self, from: data)
-                    self.albumsViewModel = models.map({return AlbumViewModel(album: $0)})
+                    self.albumsViewModel = models.map({return AlbumCellViewModel(album: $0)})
                     self.tableView.reloadData()
                 }
             } catch {
@@ -65,8 +65,10 @@ class AlbumTableViewController: UITableViewController {
         self.userId = id
         self.userName = name
     }
-    
-    private func didTapCell(with albumId: Int, by userName: String) {
+}
+
+extension AlbumTableViewController: TableViewRowNavigable {
+    func didTapCell(with albumId: Int, by userName: String) {
         let photoTableViewController = PhotoTableViewController()
         photoTableViewController.setPhoto(with: albumId, by: userName)
         self.navigationController?.pushViewController(photoTableViewController, animated: true)

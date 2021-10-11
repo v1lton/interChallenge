@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PhotoViewModel {
+class PhotoCellViewModel {
     let photoUrl: String
     let title: String
     let thumbnailUrl: String

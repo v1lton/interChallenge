@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AlbumViewModel {
+class AlbumCellViewModel {
     let id: Int
     let title: String
     

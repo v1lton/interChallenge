@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CommentViewModel: TitleAndDescriptionViewModel {
+class CommentCellViewModel: TitleAndDescriptionViewModel {
     
     init(comment: Comment) {
         super.init()
