@@ -63,13 +63,7 @@ class AlbumTableViewController: UITableViewController, Configurable {
         let albumId = viewModel.albumViewModels.value[indexPath.row].id
         self.didTapCell(with: albumId, by: self.userName)
     }
-
-    // MARK: - Navigation
     
-    public func setUser(id: Int, name: String) {
-        self.userId = id
-        self.userName = name
-    }
 }
 
 extension AlbumTableViewController: TableViewRowNavigable {

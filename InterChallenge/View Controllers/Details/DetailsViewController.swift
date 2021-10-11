@@ -23,7 +23,6 @@ class DetailsViewController: UIViewController, Configurable {
     }
     
     override func loadView() {
-        self.detailsView.setup(viewModel: self.viewModel)
         self.view = detailsView
     }
     
@@ -34,7 +33,7 @@ class DetailsViewController: UIViewController, Configurable {
         }
         
         viewModel.name.addObserver { [weak self] (name) in
-            self?.name = name
+            self?.detailsView.nameLabel.text = name
         }
     }
     

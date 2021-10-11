@@ -1,10 +1,3 @@
-//
-//  ChallengeView.swift
-//  InterChallenge
-//
-//  Created by Wilton Ramos on 07/10/21.
-//
-
 import Alamofire
 import UIKit
 
@@ -16,6 +9,7 @@ class DetailsView: UIView {
     public init() {
         super.init(frame: .zero)
         self.setupConstraints()
+        self.setupStyle()
         self.setupDetailImageViewStyle()
         self.setupNameLabelViewStyle()
         
@@ -25,10 +19,8 @@ class DetailsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(viewModel: DetailsViewModel) {
+    private func setupStyle() {
         self.backgroundColor = .white
-        self.detailsImageView.image = UIImage(data: viewModel.photoData.value)
-        self.nameLabel.text = viewModel.name.value
     }
     
     private func setupDetailImageViewStyle() {
@@ -43,8 +35,7 @@ class DetailsView: UIView {
         self.nameLabel.lineBreakMode = .byTruncatingTail
         self.nameLabel.textAlignment = .natural
     }
-    
-    
+
 }
 
 extension DetailsView: ViewConstraints {
