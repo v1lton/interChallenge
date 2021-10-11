@@ -273,7 +273,6 @@
 		89BF55612714CD9A004F7EF5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				89BF55622714CDC2004F7EF5 /* Protocols */,
 				89BF554227145E30004F7EF5 /* Observable.swift */,
 				89BF555A2714B12F004F7EF5 /* Extensions.swift */,
 			);
@@ -414,6 +413,7 @@
 				BA0CF8C626334817007BDFC8 /* View Controllers */,
 				BA0CF8BF2632F7CD007BDFC8 /* Models */,
 				BA0CF8B62632F552007BDFC8 /* Cells */,
+				89BF55622714CDC2004F7EF5 /* Protocols */,
 				89BF55612714CD9A004F7EF5 /* Helpers */,
 				BA93F7EB2632035800CE8AFF /* AppDelegate.swift */,
 				BA93F7ED2632035800CE8AFF /* SceneDelegate.swift */,
