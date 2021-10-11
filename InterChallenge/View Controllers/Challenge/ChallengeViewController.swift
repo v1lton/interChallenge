@@ -1,10 +1,19 @@
 import Alamofire
 import UIKit
 
-class ChallengeViewController: UITableViewController {
-    
-    var viewModel: ChallengeViewModel = ChallengeViewModel()
+class ChallengeViewController: UITableViewController, Configurable {
+
+    var viewModel: ChallengeViewModel!
     weak var coordinator: AppCoordinator?
+    
+    required init(viewModel: ChallengeViewModel) {
+        super.init(style: .plain)
+        self.viewModel = viewModel
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

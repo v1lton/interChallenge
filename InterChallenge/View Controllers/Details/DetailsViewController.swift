@@ -1,13 +1,13 @@
 import UIKit
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: UIViewController, Configurable {
     var detailsView = DetailsView()
     var photo = UIImage()
     var name = String()
     var viewModel: DetailsViewModel!
     weak var coordinator: AppCoordinator?
     
-    init(viewModel: DetailsViewModel) {
+    required init(viewModel: DetailsViewModel) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
     }

@@ -1,14 +1,14 @@
 import Alamofire
 import UIKit
 
-class CommentTableViewController: UITableViewController {
+class CommentTableViewController: UITableViewController, Configurable {
     
     var postId = Int()
     var userName = String()
     var viewModel: CommentViewModel!
     weak var coordinator: AppCoordinator?
     
-    init(viewModel: CommentViewModel) {
+    required init(viewModel: CommentViewModel) {
         super.init(style: .plain)
         self.viewModel = viewModel
     }

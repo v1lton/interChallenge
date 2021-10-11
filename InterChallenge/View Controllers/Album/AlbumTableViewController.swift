@@ -1,14 +1,14 @@
 import Alamofire
 import UIKit
 
-class AlbumTableViewController: UITableViewController {
+class AlbumTableViewController: UITableViewController, Configurable {
 
     var userId = Int()
     var userName = String()
     var viewModel: AlbumViewModel!
     weak var coordinator: AppCoordinator?
     
-    init(viewModel: AlbumViewModel) {
+    required init(viewModel: AlbumViewModel) {
         super.init(style: .plain)
         self.viewModel = viewModel
     }

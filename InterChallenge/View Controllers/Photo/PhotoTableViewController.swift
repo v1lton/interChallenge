@@ -1,16 +1,15 @@
 import Alamofire
 import UIKit
 
-//TODO: conformar ao protocolo
 
-class PhotoTableViewController: UITableViewController {
+class PhotoTableViewController: UITableViewController, Configurable {
 
     var albumId = Int()
     var userName = String()
     var viewModel: PhotoViewModel!
     weak var coordinator: AppCoordinator?
     
-    init(viewModel: PhotoViewModel) {
+    required init(viewModel: PhotoViewModel) {
         super.init(style: .plain)
         self.viewModel = viewModel
     }

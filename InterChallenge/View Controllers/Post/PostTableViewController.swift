@@ -1,14 +1,14 @@
 import Alamofire
 import UIKit
 
-class PostTableViewController: UITableViewController {
+class PostTableViewController: UITableViewController, Configurable {
     
     var userId = Int()
     var userName = String()
     var viewModel: PostViewModel!
     weak var coordinator: AppCoordinator?
     
-    init(viewModel: PostViewModel) {
+    required init(viewModel: PostViewModel) {
         super.init(style: .plain)
         self.viewModel = viewModel
     }

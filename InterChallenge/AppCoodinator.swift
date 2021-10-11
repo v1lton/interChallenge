@@ -22,7 +22,7 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let challengeViewController = ChallengeViewController()
+        let challengeViewController = ChallengeViewController(viewModel: ChallengeViewModel())
         challengeViewController.coordinator = self
         self.navigationController.pushViewController(challengeViewController, animated: true)
     }
