@@ -1,14 +1,11 @@
-//
-//  AlbumViewModel.swift
-//  InterChallenge
-//
-//  Created by Wilton Ramos on 11/10/21.
-//
-
 import Alamofire
 import Foundation
 
-class AlbumViewModel {
+class AlbumViewModel: TableViewCompatible {
+    var reuseIdentifier: String {
+        return "AlbumCell"
+    }
+    
     var userId = Observable<Int>(value: 0)
     var userName = Observable<String>(value: "")
     var error = Observable<Bool>(value: false)

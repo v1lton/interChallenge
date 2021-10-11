@@ -8,7 +8,11 @@
 import Alamofire
 import Foundation
 
-class PhotoViewModel {
+class PhotoViewModel: TableViewCompatible {
+    var reuseIdentifier: String {
+        return "PhotoCell"
+    }
+    
     var albumId = Observable<Int>(value: 0)
     var userName = Observable<String>(value: "")
     var error = Observable<Bool>(value: false)

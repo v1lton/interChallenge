@@ -1,14 +1,11 @@
-//
-//  PostViewModel.swift
-//  InterChallenge
-//
-//  Created by Wilton Ramos on 11/10/21.
-//
-
 import Alamofire
 import Foundation
 
-class PostViewModel {
+class PostViewModel: TableViewCompatible {
+    var reuseIdentifier: String {
+        return "TitleAndDescriptionCell"
+    }
+    
     
     var userId = Observable<Int>(value: 0)
     var userName = Observable<String>(value: "")

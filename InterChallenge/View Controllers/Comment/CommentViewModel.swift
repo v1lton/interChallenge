@@ -8,7 +8,11 @@
 import Alamofire
 import Foundation
 
-class CommentViewModel {
+class CommentViewModel: TableViewCompatible {
+    var reuseIdentifier: String {
+        return "TitleAndDescriptionCell"
+    }
+    
     var postId = Observable<Int>(value: 0)
     var userName = Observable<String>(value: "")
     var error = Observable<Bool>(value: false)

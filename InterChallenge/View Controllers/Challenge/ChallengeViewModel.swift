@@ -8,7 +8,11 @@
 import Alamofire
 import Foundation
 
-class ChallengeViewModel {
+class ChallengeViewModel: TableViewCompatible {
+    var reuseIdentifier: String {
+        return "UserCell"
+    }
+    
     var userViewModels = Observable<[UserCellViewModel]>(value: [])
     var error = Observable<Bool>(value: false)
     

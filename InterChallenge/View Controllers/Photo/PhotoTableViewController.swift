@@ -22,7 +22,7 @@ class PhotoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.estimatedRowHeight = 173
-        tableView.register(PhotoTableViewCell.self, forCellReuseIdentifier: "PhotoCell")
+        tableView.register(PhotoTableViewCell.self, forCellReuseIdentifier: viewModel.reuseIdentifier)
         self.initBinding()
     }
     
@@ -51,7 +51,7 @@ class PhotoTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as? PhotoTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reuseIdentifier, for: indexPath) as? PhotoTableViewCell else {
             return UITableViewCell()
         }
 

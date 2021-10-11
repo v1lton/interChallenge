@@ -9,8 +9,7 @@ class ChallengeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Desafio"
-        self.tableView.estimatedRowHeight = 233
-        tableView.register(UserTableViewCell.self, forCellReuseIdentifier: "UserCell")
+        self.setCellStyle()
         self.initBinding()
     }
     
@@ -24,12 +23,17 @@ class ChallengeViewController: UITableViewController {
         }
     }
     
+    private func setCellStyle() {
+        self.tableView.estimatedRowHeight = 233
+        tableView.register(UserTableViewCell.self, forCellReuseIdentifier: viewModel.reuseIdentifier)
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel.userViewModels.value.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reuseIdentifier, for: indexPath) as? UserTableViewCell else {
             return UITableViewCell()
         }
         

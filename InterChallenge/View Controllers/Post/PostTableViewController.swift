@@ -20,7 +20,7 @@ class PostTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.estimatedRowHeight = 97
-        tableView.register(TitleAndDescriptionTableViewCell.self, forCellReuseIdentifier: "TitleAndDescriptionCell")
+        tableView.register(TitleAndDescriptionTableViewCell.self, forCellReuseIdentifier: viewModel.reuseIdentifier)
         self.initBinding()
     }
     
@@ -49,7 +49,7 @@ class PostTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TitleAndDescriptionCell", for: indexPath) as? TitleAndDescriptionTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reuseIdentifier, for: indexPath) as? TitleAndDescriptionTableViewCell else {
             return UITableViewCell()
         }
 

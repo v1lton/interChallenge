@@ -20,7 +20,7 @@ class AlbumTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.estimatedRowHeight = 44
-        tableView.register(AlbumTableViewCell.self, forCellReuseIdentifier: "AlbumCell")
+        tableView.register(AlbumTableViewCell.self, forCellReuseIdentifier: viewModel.reuseIdentifier)
         self.initBinding()
     }
     
@@ -49,7 +49,7 @@ class AlbumTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath) as? AlbumTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reuseIdentifier, for: indexPath) as? AlbumTableViewCell else {
             return UITableViewCell()
         }
         
