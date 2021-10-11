@@ -1,7 +1,7 @@
 import Alamofire
 import UIKit
 
-class ChallengeViewController: UITableViewController, Configurable {
+class ChallengeViewController: UITableViewController, Binding {
 
     var viewModel: ChallengeViewModel!
     weak var coordinator: AppCoordinator?

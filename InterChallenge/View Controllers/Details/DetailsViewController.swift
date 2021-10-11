@@ -1,6 +1,6 @@
 import UIKit
 
-class DetailsViewController: UIViewController, Configurable {
+class DetailsViewController: UIViewController, Binding {
     var detailsView = DetailsView()
     var photo = UIImage()
     var name = String()

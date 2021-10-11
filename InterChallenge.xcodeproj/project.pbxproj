@@ -22,7 +22,7 @@
 		89BF55592714A12B004F7EF5 /* AppCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF55582714A12B004F7EF5 /* AppCoodinator.swift */; };
 		89BF555B2714B12F004F7EF5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF555A2714B12F004F7EF5 /* Extensions.swift */; };
 		89BF555D2714B80E004F7EF5 /* TableViewCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF555C2714B80E004F7EF5 /* TableViewCompatible.swift */; };
-		89BF555F2714BBCE004F7EF5 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF555E2714BBCE004F7EF5 /* Configurable.swift */; };
+		89BF555F2714BBCE004F7EF5 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF555E2714BBCE004F7EF5 /* Binding.swift */; };
 		89C29A2A270F396200E608FD /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C29A29270F396200E608FD /* DetailsView.swift */; };
 		89C29A2D270F3B5500E608FD /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C29A2C270F3B5500E608FD /* UserCellViewModel.swift */; };
 		89D965392710CE44006EFC8D /* TitleAndDescriptionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D965382710CE44006EFC8D /* TitleAndDescriptionCellViewModel.swift */; };
@@ -147,7 +147,7 @@
 		89BF55582714A12B004F7EF5 /* AppCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoodinator.swift; sourceTree = "<group>"; };
 		89BF555A2714B12F004F7EF5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		89BF555C2714B80E004F7EF5 /* TableViewCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCompatible.swift; sourceTree = "<group>"; };
-		89BF555E2714BBCE004F7EF5 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
+		89BF555E2714BBCE004F7EF5 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		89C29A29270F396200E608FD /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		89C29A2C270F3B5500E608FD /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		89D965382710CE44006EFC8D /* TitleAndDescriptionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndDescriptionCellViewModel.swift; sourceTree = "<group>"; };
@@ -286,7 +286,7 @@
 				898B0049271212710017D248 /* TableViewRowNavigable.swift */,
 				89BF5554271481E4004F7EF5 /* TitleAndDescription.swift */,
 				898B0051271219020017D248 /* ViewConstraints.swift */,
-				89BF555E2714BBCE004F7EF5 /* Configurable.swift */,
+				89BF555E2714BBCE004F7EF5 /* Binding.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -657,7 +657,7 @@
 				89BF555D2714B80E004F7EF5 /* TableViewCompatible.swift in Sources */,
 				BA0CF8DE263358E5007BDFC8 /* Comment.swift in Sources */,
 				89C29A2D270F3B5500E608FD /* UserCellViewModel.swift in Sources */,
-				89BF555F2714BBCE004F7EF5 /* Configurable.swift in Sources */,
+				89BF555F2714BBCE004F7EF5 /* Binding.swift in Sources */,
 				89BF5550271469A4004F7EF5 /* PhotoViewModel.swift in Sources */,
 				89BF55592714A12B004F7EF5 /* AppCoodinator.swift in Sources */,
 				BA93F7EE2632035800CE8AFF /* SceneDelegate.swift in Sources */,

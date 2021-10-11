@@ -1,8 +1,10 @@
 import Foundation
 
-protocol Configurable {
+protocol Binding {
     
     associatedtype T
     
     init(viewModel: T)
+    
+    func initBinding()
 }

@@ -1,7 +1,7 @@
 import Alamofire
 import UIKit
 
-class AlbumTableViewController: UITableViewController, Configurable {
+class AlbumTableViewController: UITableViewController, Binding {
 
     var userId = Int()
     var userName = String()

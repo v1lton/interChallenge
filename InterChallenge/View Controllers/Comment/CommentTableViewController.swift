@@ -1,7 +1,7 @@
 import Alamofire
 import UIKit
 
-class CommentTableViewController: UITableViewController, Configurable {
+class CommentTableViewController: UITableViewController, Binding {
     
     var postId = Int()
     var userName = String()

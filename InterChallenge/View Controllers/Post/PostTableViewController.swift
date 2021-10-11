@@ -1,7 +1,7 @@
 import Alamofire
 import UIKit
 
-class PostTableViewController: UITableViewController, Configurable {
+class PostTableViewController: UITableViewController, Binding {
     
     var userId = Int()
     var userName = String()
