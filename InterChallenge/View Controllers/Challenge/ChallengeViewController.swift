@@ -4,6 +4,7 @@ import UIKit
 class ChallengeViewController: UITableViewController {
     
     var viewModel: ChallengeViewModel = ChallengeViewModel()
+    weak var coordinator: MainCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,33 +36,14 @@ class ChallengeViewController: UITableViewController {
         return cell
     }
     
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? AlbumTableViewController {
-            if let info = sender as? (id: Int, name: String) {
-                destinationVC.userId = info.id
-                destinationVC.userName = info.name
-            }
-        }
-        
-        if let destinationVC = segue.destination as? PostTableViewController {
-            if let info = sender as? (id: Int, name: String) {
-                destinationVC.userId = info.id
-                destinationVC.userName = info.name
-            }
-        }
-    }
 }
 
 extension ChallengeViewController: UserTableViewCellDelegate {
     func didTapAlbums(with userId: Int, by name: String) {
-        let albumTableViewController = AlbumTableViewController(viewModel: AlbumViewModel(with: userId, by: name))
-        self.navigationController?.pushViewController(albumTableViewController, animated: true)
+        self.coordinator?.showAlbums(with: userId, by: name)
     }
     
     func didTapPosts(with userId: Int, by name: String) {
-        let postTableViewController = PostTableViewController(viewModel: PostViewModel(with: userId, by: name))
-        self.navigationController?.pushViewController(postTableViewController, animated: true)
+        self.coordinator?.showPosts(with: userId, by: name)
     }
 }

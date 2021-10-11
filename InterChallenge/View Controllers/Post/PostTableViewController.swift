@@ -6,6 +6,7 @@ class PostTableViewController: UITableViewController {
     var userId = Int()
     var userName = String()
     var viewModel: PostViewModel!
+    weak var coordinator: MainCoordinator?
     
     init(viewModel: PostViewModel) {
         super.init(style: .plain)
@@ -62,7 +63,6 @@ class PostTableViewController: UITableViewController {
 
 extension PostTableViewController: TableViewRowNavigable {
     func didTapCell(with postId: Int, by userName: String) {
-        let commentTableViewController = CommentTableViewController(viewModel: CommentViewModel(with: postId, by: userName))
-        self.navigationController?.pushViewController(commentTableViewController, animated: true)
+        self.coordinator?.showComments(with: postId, by: userName)
     }
 }

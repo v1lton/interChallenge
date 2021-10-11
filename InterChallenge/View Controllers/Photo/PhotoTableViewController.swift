@@ -8,6 +8,7 @@ class PhotoTableViewController: UITableViewController {
     var albumId = Int()
     var userName = String()
     var viewModel: PhotoViewModel!
+    weak var coordinator: MainCoordinator?
     
     init(viewModel: PhotoViewModel) {
         super.init(style: .plain)
@@ -61,12 +62,8 @@ class PhotoTableViewController: UITableViewController {
         self.didTapCell(with: photo.photoUrl, by: photo.title)
     }
 
-    // MARK: - Navigation
-    
-    //TODO: refatorar esses nomes
     private func didTapCell(with photoUrl: String, by description: String) {
-        let detailsViewController = DetailsViewController(viewModel: DetailsViewModel(with: photoUrl, by: description))
-        self.navigationController?.pushViewController(detailsViewController, animated: true)
+        self.coordinator?.showDetails(with: photoUrl, by: description)
     }
     
 }

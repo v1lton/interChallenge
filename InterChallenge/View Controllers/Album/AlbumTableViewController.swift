@@ -6,6 +6,7 @@ class AlbumTableViewController: UITableViewController {
     var userId = Int()
     var userName = String()
     var viewModel: AlbumViewModel!
+    weak var coordinator: MainCoordinator?
     
     init(viewModel: AlbumViewModel) {
         super.init(style: .plain)
@@ -69,7 +70,6 @@ class AlbumTableViewController: UITableViewController {
 
 extension AlbumTableViewController: TableViewRowNavigable {
     func didTapCell(with albumId: Int, by userName: String) {
-        let photoTableViewController = PhotoTableViewController(viewModel: PhotoViewModel(with: albumId, by: userName))
-        self.navigationController?.pushViewController(photoTableViewController, animated: true)
+        self.coordinator?.showPhotos(with: albumId, by: userName)
     }
 }
