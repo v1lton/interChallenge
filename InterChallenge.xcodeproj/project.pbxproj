@@ -19,8 +19,7 @@
 		89BF5550271469A4004F7EF5 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF554F271469A4004F7EF5 /* PhotoViewModel.swift */; };
 		89BF555327146FB3004F7EF5 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF555227146FB3004F7EF5 /* DetailsViewModel.swift */; };
 		89BF5555271481E4004F7EF5 /* TitleAndDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF5554271481E4004F7EF5 /* TitleAndDescription.swift */; };
-		89BF55572714A049004F7EF5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF55562714A049004F7EF5 /* Coordinator.swift */; };
-		89BF55592714A12B004F7EF5 /* MainCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF55582714A12B004F7EF5 /* MainCoodinator.swift */; };
+		89BF55592714A12B004F7EF5 /* AppCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF55582714A12B004F7EF5 /* AppCoodinator.swift */; };
 		89C29A2A270F396200E608FD /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C29A29270F396200E608FD /* DetailsView.swift */; };
 		89C29A2D270F3B5500E608FD /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C29A2C270F3B5500E608FD /* UserCellViewModel.swift */; };
 		89D965392710CE44006EFC8D /* TitleAndDescriptionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D965382710CE44006EFC8D /* TitleAndDescriptionCellViewModel.swift */; };
@@ -142,8 +141,7 @@
 		89BF554F271469A4004F7EF5 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		89BF555227146FB3004F7EF5 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		89BF5554271481E4004F7EF5 /* TitleAndDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndDescription.swift; sourceTree = "<group>"; };
-		89BF55562714A049004F7EF5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		89BF55582714A12B004F7EF5 /* MainCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoodinator.swift; sourceTree = "<group>"; };
+		89BF55582714A12B004F7EF5 /* AppCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoodinator.swift; sourceTree = "<group>"; };
 		89C29A29270F396200E608FD /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		89C29A2C270F3B5500E608FD /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		89D965382710CE44006EFC8D /* TitleAndDescriptionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndDescriptionCellViewModel.swift; sourceTree = "<group>"; };
@@ -388,8 +386,7 @@
 				BA93F7F62632035A00CE8AFF /* LaunchScreen.storyboard */,
 				BA93F7F92632035A00CE8AFF /* Info.plist */,
 				89BF554227145E30004F7EF5 /* Observable.swift */,
-				89BF55562714A049004F7EF5 /* Coordinator.swift */,
-				89BF55582714A12B004F7EF5 /* MainCoodinator.swift */,
+				89BF55582714A12B004F7EF5 /* AppCoodinator.swift */,
 			);
 			path = InterChallenge;
 			sourceTree = "<group>";
@@ -617,7 +614,6 @@
 				BA0CF8FA26336FEB007BDFC8 /* PhotoTableViewController.swift in Sources */,
 				898B004A271212710017D248 /* Protocols.swift in Sources */,
 				89BF55412714596E004F7EF5 /* ChallengeViewModel.swift in Sources */,
-				89BF55572714A049004F7EF5 /* Coordinator.swift in Sources */,
 				89BF554327145E30004F7EF5 /* Observable.swift in Sources */,
 				BA0CF9022633764E007BDFC8 /* DetailsViewController.swift in Sources */,
 				893A7FE0271091F60038EE78 /* AlbumCellViewModel.swift in Sources */,
@@ -628,7 +624,7 @@
 				BA0CF8DE263358E5007BDFC8 /* Comment.swift in Sources */,
 				89C29A2D270F3B5500E608FD /* UserCellViewModel.swift in Sources */,
 				89BF5550271469A4004F7EF5 /* PhotoViewModel.swift in Sources */,
-				89BF55592714A12B004F7EF5 /* MainCoodinator.swift in Sources */,
+				89BF55592714A12B004F7EF5 /* AppCoodinator.swift in Sources */,
 				BA93F7EE2632035800CE8AFF /* SceneDelegate.swift in Sources */,
 				89C29A2A270F396200E608FD /* DetailsView.swift in Sources */,
 				BA0CF8DA26335759007BDFC8 /* Post.swift in Sources */,
