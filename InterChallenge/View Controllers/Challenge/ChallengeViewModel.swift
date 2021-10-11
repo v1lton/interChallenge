@@ -10,6 +10,7 @@ import Foundation
 
 class ChallengeViewModel {
     var userViewModels = Observable<[UserCellViewModel]>(value: [])
+    var error = Observable<Bool>(value: false)
     
     init() {
         self.fillUsers()
@@ -18,19 +19,13 @@ class ChallengeViewModel {
     private func fillUsers() {
         AF.request("https://jsonplaceholder.typicode.com/users").validate().responseJSON { response in
             guard response.error == nil else {
-//                let alert = UIAlertController(title: "Erro", message: "Algo errado aconteceu. Tente novamente mais tarde.", preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
-//                    alert.dismiss(animated: true)
-//                }))
-//                self.present(alert, animated: true)
+                self.error.value = true
                 return
             }
-            
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([User].self, from: data)
                     self.userViewModels.value = models.map({return UserCellViewModel(user: $0)})
-                    //self.tableView.reloadData()
                 }
             } catch {
                 print("Error during JSON serialization: \(error.localizedDescription)")

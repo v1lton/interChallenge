@@ -37,6 +37,10 @@ class PostTableViewController: UITableViewController {
             self?.userName = userName
             self?.navigationItem.title = "Postagens de \(userName)"
         }
+        
+        viewModel.error.addObserver(fireNow: false) { [weak self] (error) in
+            self?.displayAlert()
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -18,6 +18,10 @@ class ChallengeViewController: UITableViewController {
         viewModel.userViewModels.addObserver(fireNow: false) { [weak self] (userViewModels) in
             self?.tableView.reloadData()
         }
+        
+        viewModel.error.addObserver(fireNow: false) { [weak self] (error) in
+            self?.displayAlert()
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

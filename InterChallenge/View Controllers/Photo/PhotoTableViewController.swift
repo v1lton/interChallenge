@@ -39,6 +39,10 @@ class PhotoTableViewController: UITableViewController {
             self?.userName = userName
             self?.navigationItem.title = "Fotos de \(userName)"
         }
+        
+        viewModel.error.addObserver(fireNow: false) { [weak self] (error) in
+            self?.displayAlert()
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

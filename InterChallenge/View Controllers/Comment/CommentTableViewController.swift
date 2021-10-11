@@ -37,6 +37,10 @@ class CommentTableViewController: UITableViewController {
             self?.userName = userName
             self?.navigationItem.title = "Comentários de \(userName)"
         }
+        
+        viewModel.error.addObserver(fireNow: false) { [weak self] (error) in
+            self?.displayAlert()
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
