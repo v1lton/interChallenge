@@ -1,4 +1,3 @@
-import Alamofire
 import UIKit
 
 class CommentTableViewController: UITableViewController, Binding {
