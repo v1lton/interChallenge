@@ -47,7 +47,7 @@ class ChallengeViewController: UITableViewController, Binding {
         
         let userViewModel = self.viewModel.userViewModels.value[indexPath.row]
         cell.userViewModel = userViewModel
-        cell.bind(delegate: self, by: indexPath.row)
+        cell.set(delegate: self, by: indexPath.row)
         
         return cell
     }
