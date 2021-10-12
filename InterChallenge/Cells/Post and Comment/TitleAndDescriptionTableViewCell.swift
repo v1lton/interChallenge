@@ -22,6 +22,7 @@ class TitleAndDescriptionTableViewCell: UITableViewCell {
         self.contentView.addSubview(label)
         
         label.text = "description"
+        label.font = UIFont.systemFont(ofSize: 17)
         label.baselineAdjustment = .alignBaselines
         label.textAlignment = .natural
         label.numberOfLines = 0
@@ -68,9 +69,9 @@ extension TitleAndDescriptionTableViewCell: ViewConstraints {
         self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.descriptionLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
-            self.descriptionLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
+            self.descriptionLabel.trailingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.trailingAnchor, constant: -16),
             self.descriptionLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16),
-            self.descriptionLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -8)
+            self.descriptionLabel.bottomAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.bottomAnchor, constant: -8)
         ])
     }
     
