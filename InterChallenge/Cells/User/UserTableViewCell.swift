@@ -233,7 +233,7 @@ extension UserTableViewCell: ViewConstraints {
     private func setupEmailLabelConstraints() {
         self.emailLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.emailLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
+            self.emailLabel.trailingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.trailingAnchor, constant: -16),
             self.emailLabel.leadingAnchor.constraint(equalTo: self.separatorView.trailingAnchor, constant: 16),
             self.emailLabel.topAnchor.constraint(equalTo: self.userNameLabel.bottomAnchor, constant: 24)
         ])
