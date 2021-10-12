@@ -7,4 +7,5 @@ protocol Binding {
     init(viewModel: T)
     
     func initBinding()
+    
 }

@@ -18,8 +18,7 @@ class CommentTableViewController: UITableViewController, Binding {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.estimatedRowHeight = 97
-        tableView.register(TitleAndDescriptionTableViewCell.self, forCellReuseIdentifier: viewModel.reuseIdentifier)
+        self.setCellStyle()
         self.initBinding()
     }
     
@@ -40,6 +39,11 @@ class CommentTableViewController: UITableViewController, Binding {
         viewModel.error.addObserver(fireNow: false) { [weak self] (error) in
             self?.displayAlert()
         }
+    }
+    
+    private func setCellStyle() {
+        self.tableView.estimatedRowHeight = 97
+        tableView.register(TitleAndDescriptionTableViewCell.self, forCellReuseIdentifier: viewModel.reuseIdentifier)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

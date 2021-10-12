@@ -1,6 +1,7 @@
 import Foundation
 
 struct Comment: Codable, TitleAndDescription {
+    
     let id: Int
     let postId: Int
     let title: String
@@ -10,4 +11,5 @@ struct Comment: Codable, TitleAndDescription {
         case id, postId, body
         case title = "name"
     }
+    
 }

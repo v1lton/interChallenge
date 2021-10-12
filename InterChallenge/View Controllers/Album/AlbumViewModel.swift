@@ -2,6 +2,7 @@ import Alamofire
 import Foundation
 
 class AlbumViewModel: TableViewCompatible {
+    
     var reuseIdentifier: String {
         return "AlbumCell"
     }
@@ -23,7 +24,6 @@ class AlbumViewModel: TableViewCompatible {
                 self.error.value = true
                 return
             }
-            
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([Album].self, from: data)
@@ -34,4 +34,5 @@ class AlbumViewModel: TableViewCompatible {
             }
         }
     }
+    
 }

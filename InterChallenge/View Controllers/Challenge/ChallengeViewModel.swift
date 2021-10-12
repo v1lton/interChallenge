@@ -2,6 +2,7 @@ import Alamofire
 import Foundation
 
 class ChallengeViewModel: TableViewCompatible {
+    
     var reuseIdentifier: String {
         return "UserCell"
     }
@@ -29,4 +30,5 @@ class ChallengeViewModel: TableViewCompatible {
             }
         }
     }
+    
 }

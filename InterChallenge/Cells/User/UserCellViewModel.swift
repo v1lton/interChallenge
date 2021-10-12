@@ -1,6 +1,7 @@
 import Foundation
 
 public class UserCellViewModel {
+    
     let id: Int
     let initialsLabel: String
     let nameLabel: String

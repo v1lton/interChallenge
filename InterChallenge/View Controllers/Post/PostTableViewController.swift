@@ -18,8 +18,7 @@ class PostTableViewController: UITableViewController, Binding {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.estimatedRowHeight = 97
-        tableView.register(TitleAndDescriptionTableViewCell.self, forCellReuseIdentifier: viewModel.reuseIdentifier)
+        self.setCellStyle()
         self.initBinding()
     }
     
@@ -41,11 +40,15 @@ class PostTableViewController: UITableViewController, Binding {
             self?.displayAlert()
         }
     }
+    
+    private func setCellStyle() {
+        self.tableView.estimatedRowHeight = 97
+        tableView.register(TitleAndDescriptionTableViewCell.self, forCellReuseIdentifier: viewModel.reuseIdentifier)
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.postViewModels.value.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reuseIdentifier, for: indexPath) as? TitleAndDescriptionTableViewCell else {
@@ -62,10 +65,13 @@ class PostTableViewController: UITableViewController, Binding {
         let postId = viewModel.postViewModels.value[indexPath.row].id
         self.didTapCell(with: postId, by: self.userName)
     }
+    
 }
 
 extension PostTableViewController: TableViewRowNavigable {
+    
     func didTapCell(with postId: Int, by userName: String) {
         self.coordinator?.showComments(with: postId, by: userName)
     }
+    
 }

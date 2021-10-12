@@ -1,6 +1,7 @@
 import Foundation
 
 struct Photo: Codable {
+    
     let id: Int
     let albumId: Int
     let title: String
@@ -10,4 +11,5 @@ struct Photo: Codable {
     enum CodingKeys: String, CodingKey {
         case id, albumId, title, url, thumbnailUrl
     }
+    
 }

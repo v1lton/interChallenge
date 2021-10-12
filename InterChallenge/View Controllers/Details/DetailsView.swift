@@ -11,7 +11,6 @@ class DetailsView: UIView {
         self.setupStyle()
         self.setupDetailImageViewStyle()
         self.setupNameLabelViewStyle()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -34,10 +33,11 @@ class DetailsView: UIView {
         self.nameLabel.lineBreakMode = .byTruncatingTail
         self.nameLabel.textAlignment = .natural
     }
-
+    
 }
 
 extension DetailsView: ViewConstraints {
+    
     func setupConstraints() {
         self.setupDetailImageViewConstraints()
         self.setupNameLabelConstraints()
@@ -63,4 +63,5 @@ extension DetailsView: ViewConstraints {
             self.nameLabel.topAnchor.constraint(equalTo: self.detailsImageView.bottomAnchor, constant: 16)
         ])
     }
+    
 }

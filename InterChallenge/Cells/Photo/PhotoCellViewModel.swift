@@ -1,6 +1,7 @@
 import Foundation
 
 class PhotoCellViewModel {
+    
     let photoUrl: String
     let title: String
     let thumbnailUrl: String
@@ -10,4 +11,5 @@ class PhotoCellViewModel {
         self.title = photo.title
         self.thumbnailUrl = photo.thumbnailUrl
     }
+    
 }

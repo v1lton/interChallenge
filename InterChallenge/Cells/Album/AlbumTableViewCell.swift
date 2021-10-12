@@ -34,6 +34,7 @@ class AlbumTableViewCell: UITableViewCell {
 }
 
 extension AlbumTableViewCell: ViewConstraints {
+    
     func setupConstraints() {
         self.setupAlbumNameLabelConstraints()
     }
@@ -47,4 +48,5 @@ extension AlbumTableViewCell: ViewConstraints {
             self.albumNameLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16)
         ])
     }
+    
 }

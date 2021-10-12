@@ -2,6 +2,7 @@ import Alamofire
 import Foundation
 
 class PhotoViewModel: TableViewCompatible {
+    
     var reuseIdentifier: String {
         return "PhotoCell"
     }
@@ -23,7 +24,6 @@ class PhotoViewModel: TableViewCompatible {
                 self.error.value = true
                 return
             }
-            
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([Photo].self, from: data)
@@ -34,4 +34,5 @@ class PhotoViewModel: TableViewCompatible {
             }
         }
     }
+    
 }

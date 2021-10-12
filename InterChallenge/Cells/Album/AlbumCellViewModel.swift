@@ -1,6 +1,7 @@
 import Foundation
 
 class AlbumCellViewModel {
+    
     let id: Int
     let title: String
     
@@ -8,4 +9,5 @@ class AlbumCellViewModel {
         self.id = album.id
         self.title = album.title
     }
+    
 }

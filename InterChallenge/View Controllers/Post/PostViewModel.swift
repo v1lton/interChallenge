@@ -2,10 +2,10 @@ import Alamofire
 import Foundation
 
 class PostViewModel: TableViewCompatible {
+    
     var reuseIdentifier: String {
         return "TitleAndDescriptionCell"
     }
-    
     
     var userId = Observable<Int>(value: 0)
     var userName = Observable<String>(value: "")
@@ -24,7 +24,6 @@ class PostViewModel: TableViewCompatible {
                 self.error.value = true
                 return
             }
-            
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([Post].self, from: data)
@@ -35,4 +34,5 @@ class PostViewModel: TableViewCompatible {
             }
         }
     }
+    
 }

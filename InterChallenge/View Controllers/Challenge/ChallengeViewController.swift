@@ -1,7 +1,7 @@
 import UIKit
 
 class ChallengeViewController: UITableViewController, Binding {
-
+    
     var viewModel: ChallengeViewModel!
     weak var coordinator: AppCoordinator?
     
@@ -47,7 +47,7 @@ class ChallengeViewController: UITableViewController, Binding {
         
         let userViewModel = self.viewModel.userViewModels.value[indexPath.row]
         cell.userViewModel = userViewModel
-        cell.bind(delegate: self, row: indexPath.row)
+        cell.bind(delegate: self, by: indexPath.row)
         
         return cell
     }
@@ -55,6 +55,7 @@ class ChallengeViewController: UITableViewController, Binding {
 }
 
 extension ChallengeViewController: UserTableViewCellDelegate {
+    
     func didTapAlbums(with userId: Int, by name: String) {
         self.coordinator?.showAlbums(with: userId, by: name)
     }
@@ -62,4 +63,5 @@ extension ChallengeViewController: UserTableViewCellDelegate {
     func didTapPosts(with userId: Int, by name: String) {
         self.coordinator?.showPosts(with: userId, by: name)
     }
+    
 }

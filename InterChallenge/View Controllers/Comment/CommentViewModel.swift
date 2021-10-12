@@ -2,6 +2,7 @@ import Alamofire
 import Foundation
 
 class CommentViewModel: TableViewCompatible {
+    
     var reuseIdentifier: String {
         return "TitleAndDescriptionCell"
     }
@@ -23,7 +24,6 @@ class CommentViewModel: TableViewCompatible {
                 self.error.value = true
                 return
             }
-            
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([Comment].self, from: data)
@@ -33,5 +33,6 @@ class CommentViewModel: TableViewCompatible {
                 print("Error during JSON serialization: \(error.localizedDescription)")
             }
         }
-   }
+    }
+    
 }

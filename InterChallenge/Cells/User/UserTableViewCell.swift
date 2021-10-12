@@ -156,7 +156,7 @@ class UserTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(delegate: UserTableViewCellDelegate, row: Int) {
+    func set(delegate: UserTableViewCellDelegate, by row: Int) {
         self.delegate = delegate
         self.backgroundColor = row % 2 == 0 ? .white : UIColor(white: 0.667, alpha: 0.2)
     }
@@ -266,4 +266,5 @@ extension UserTableViewCell: ViewConstraints {
     private func setupPostsButtonConstraints() {
         self.postsButton.translatesAutoresizingMaskIntoConstraints = false
     }
+    
 }

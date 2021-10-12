@@ -2,12 +2,15 @@ import Foundation
 import UIKit
 
 protocol Coordinator {
+    
     var navigationController: UINavigationController { get set }
 
     func start()
+    
 }
 
 class AppCoordinator: Coordinator {
+    
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -50,4 +53,5 @@ class AppCoordinator: Coordinator {
         detailsViewController.coordinator = self
         self.navigationController.pushViewController(detailsViewController, animated: true)
     }
+    
 }
