@@ -7,21 +7,134 @@ protocol UserTableViewCellDelegate: AnyObject {
 
 class UserTableViewCell: UITableViewCell {
     
-    let initialsView = UIView()
-    let initialsLabel = UILabel()
-    let nameLabel = UILabel()
-    let separatorView = UIView()
-    let userNameLabel = UILabel()
-    let emailLabel = UILabel()
-    let phoneLabel = UILabel()
-    let stackView = UIStackView()
-    let albumsButton = UIButton()
-    let postsButton = UIButton()
+    lazy var initialsView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(view)
+        
+        view.backgroundColor = .systemYellow
+        return view
+    }()
+    
+    lazy var initialsLabel: UILabel = {
+        let label = UILabel()
+        label.accessibilityIdentifier = "initialsLabel"
+        self.initialsView.addSubview(label)
+        
+        label.text = "initials"
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
+    
+    
+    lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.accessibilityIdentifier = "nameLabel"
+        self.contentView.addSubview(label)
+        
+        label.text = "name"
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
+    
+    
+    lazy var separatorView: UIView = {
+        let view = UIView()
+        view.accessibilityIdentifier = "separatorView"
+        self.contentView.addSubview(view)
+        
+        view.backgroundColor = .lightGray
+        return view
+    }()
+    
+    lazy var userNameLabel: UILabel = {
+        let label = UILabel()
+        label.accessibilityIdentifier = "userNameLabel"
+        self.contentView.addSubview(label)
+        
+        label.text = "username"
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.numberOfLines = 0
+        label.textAlignment = .natural
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
+    
+    lazy var emailLabel: UILabel = {
+        let label = UILabel()
+        label.accessibilityIdentifier = "emailLabel"
+        self.contentView.addSubview(label)
+        
+        label.text = "email"
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.numberOfLines = 0
+        label.textAlignment = .natural
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
+    
+    lazy var phoneLabel: UILabel = {
+        let label = UILabel()
+        label.accessibilityIdentifier = "phoneLabel"
+        self.contentView.addSubview(label)
+        
+        label.text = "phone"
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.numberOfLines = 0
+        label.textAlignment = .natural
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
+    
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.accessibilityIdentifier = "stackView"
+        self.contentView.addSubview(stackView)
+        
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 0
+        stackView.contentMode = .scaleToFill
+        return stackView
+    }()
+    
+    lazy var albumsButton: UIButton = {
+        let button = UIButton()
+        button.accessibilityIdentifier = "albumsButton"
+        self.stackView.addArrangedSubview(button)
+        
+        button.setTitle("ÁLBUNS", for: .normal)
+        button.setTitleColor(.systemOrange, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        button.titleLabel?.lineBreakMode = .byTruncatingMiddle
+        button.addTarget(self, action: #selector(albumsAction), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var postsButton: UIButton = {
+        let button = UIButton()
+        button.accessibilityIdentifier = "postsButton"
+        self.stackView.addArrangedSubview(button)
+        
+        button.setTitle("POSTAGENS", for: .normal)
+        button.setTitleColor(.systemOrange, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        button.titleLabel?.lineBreakMode = .byTruncatingMiddle
+        button.addTarget(self, action: #selector(postsAction), for: .touchUpInside)
+        return button
+    }()
     
     var id: Int = 0
     weak var delegate: UserTableViewCellDelegate?
     
-    weak var userViewModel: UserViewModel! {
+    weak var userViewModel: UserCellViewModel! {
         didSet {
             self.id = userViewModel.id
             self.initialsLabel.text = userViewModel.initialsLabel
@@ -34,19 +147,32 @@ class UserTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.buildViewHierarchy()
         
-        //Style
-        self.setupInitialsViewStyle()
-        self.setupNameLabelStyle()
-        self.setupSeparatorViewStyle()
-        self.setupNameLabelStyle()
-        self.setupUserNameLabelStyle()
-        self.setupEmailLabelStyle()
-        self.setupPhoneLabelStyle()
-        self.setupStackViewStyle()
-        
-        //Constraints
+        self.selectionStyle = .none
+        self.setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func set(delegate: UserTableViewCellDelegate, by row: Int) {
+        self.delegate = delegate
+        self.backgroundColor = row % 2 == 0 ? .white : UIColor(white: 0.667, alpha: 0.2)
+    }
+    
+    @objc func albumsAction(sender: UIButton!) {
+        delegate?.didTapAlbums(with: id, by: nameLabel.text ?? "")
+    }
+    
+    @objc func postsAction(sender: UIButton!) {
+        delegate?.didTapPosts(with: id, by: nameLabel.text ?? "")
+    }
+}
+
+extension UserTableViewCell: ViewConstraints {
+    
+    func setupConstraints() {
         self.setupInitialsViewConstraints()
         self.setupInitialsLabelConstraints()
         self.setupNameLabelConstraints()
@@ -55,94 +181,9 @@ class UserTableViewCell: UITableViewCell {
         self.setupEmailLabelConstraints()
         self.setupPhoneLabelConstraints()
         self.setupStackViewConstraints()
-        self.setupAlbumsButtonStyle()
-        self.setupPostsButtonStyle()
+        self.setupAlbumsButtonConstraints()
+        self.setupPostsButtonConstraints()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func bind(delegate: UserTableViewCellDelegate, row: Int) {
-        self.delegate = delegate
-        self.backgroundColor = row % 2 == 0 ? .white : UIColor(white: 0.667, alpha: 0.2)
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.selectionStyle = .none
-    }
-
-    
-    // MARK: - Styles
-    
-    private func setupInitialsViewStyle() {
-        self.initialsView.backgroundColor = .systemYellow
-    }
-    
-    private func setupInitialsLabelStyle() {
-        self.initialsLabel.text = "initials"
-        self.initialsLabel.numberOfLines = 0
-        self.initialsLabel.textAlignment = .center
-        self.initialsLabel.lineBreakMode = .byTruncatingTail
-    }
-    
-    private func setupSeparatorViewStyle() {
-        self.separatorView.backgroundColor = .lightGray
-    }
-    
-    private func setupNameLabelStyle() {
-        self.nameLabel.text = "name"
-        self.nameLabel.numberOfLines = 0
-        self.nameLabel.textAlignment = .center
-        self.nameLabel.lineBreakMode = .byTruncatingTail
-    }
-    
-    private func setupUserNameLabelStyle() {
-        self.userNameLabel.text = "username"
-        self.userNameLabel.numberOfLines = 0
-        self.userNameLabel.textAlignment = .natural
-        self.userNameLabel.lineBreakMode = .byTruncatingTail
-    }
-    
-    private func setupEmailLabelStyle() {
-        self.emailLabel.text = "email"
-        self.emailLabel.numberOfLines = 0
-        self.emailLabel.textAlignment = .natural
-        self.emailLabel.lineBreakMode = .byTruncatingTail
-    }
-    
-    private func setupPhoneLabelStyle() {
-        self.phoneLabel.text = "phone"
-        self.phoneLabel.numberOfLines = 0
-        self.phoneLabel.textAlignment = .natural
-        self.phoneLabel.lineBreakMode = .byTruncatingTail
-    }
-    
-    private func setupStackViewStyle() {
-        self.stackView.axis = .horizontal
-        self.stackView.alignment = .fill
-        self.stackView.distribution = .fillEqually
-        self.stackView.spacing = 0
-        self.stackView.contentMode = .scaleToFill
-    }
-    
-    private func setupAlbumsButtonStyle() {
-        self.albumsButton.setTitle("ÁLBUNS", for: .normal)
-        self.albumsButton.setTitleColor(.systemOrange, for: .normal)
-        self.albumsButton.titleLabel?.lineBreakMode = .byTruncatingMiddle
-        self.albumsButton.addTarget(self, action: #selector(albumsAction), for: .touchUpInside)
-    }
-    
-    private func setupPostsButtonStyle() {
-        self.postsButton.setTitle("POSTAGENS", for: .normal)
-        self.postsButton.setTitleColor(.systemOrange, for: .normal)
-        self.postsButton.titleLabel?.lineBreakMode = .byTruncatingMiddle
-        self.postsButton.addTarget(self, action: #selector(postsAction), for: .touchUpInside)
-    }
-    
-    
-    // MARK: - Constraints
     
     private func setupInitialsViewConstraints() {
         self.initialsView.translatesAutoresizingMaskIntoConstraints = false
@@ -192,7 +233,7 @@ class UserTableViewCell: UITableViewCell {
     private func setupEmailLabelConstraints() {
         self.emailLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.emailLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
+            self.emailLabel.trailingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.trailingAnchor, constant: -16),
             self.emailLabel.leadingAnchor.constraint(equalTo: self.separatorView.trailingAnchor, constant: 16),
             self.emailLabel.topAnchor.constraint(equalTo: self.userNameLabel.bottomAnchor, constant: 24)
         ])
@@ -218,28 +259,12 @@ class UserTableViewCell: UITableViewCell {
         ])
     }
     
-    private func buildViewHierarchy() {
-        self.contentView.addSubview(initialsView)
-        self.contentView.addSubview(nameLabel)
-        self.contentView.addSubview(separatorView)
-        self.contentView.addSubview(userNameLabel)
-        self.contentView.addSubview(emailLabel)
-        self.contentView.addSubview(phoneLabel)
-        self.contentView.addSubview(stackView)
-        self.stackView.addArrangedSubview(albumsButton)
-        self.stackView.addArrangedSubview(postsButton)
-        self.initialsView.addSubview(initialsLabel)
+    private func setupAlbumsButtonConstraints() {
+        self.albumsButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    private func setupPostsButtonConstraints() {
+        self.postsButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    @objc func albumsAction(sender: UIButton!) {
-        delegate?.didTapAlbums(with: id, by: nameLabel.text ?? "")
-    }
-    
-    @objc func postsAction(sender: UIButton!) {
-        delegate?.didTapPosts(with: id, by: nameLabel.text ?? "")
-    }
 }

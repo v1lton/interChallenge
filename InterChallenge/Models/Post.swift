@@ -1,6 +1,7 @@
 import Foundation
 
-struct Post: Codable {
+struct Post: Codable, TitleAndDescription {
+    
     let id: Int
     let userId: Int
     let title: String
@@ -9,4 +10,5 @@ struct Post: Codable {
     enum CodingKeys: String, CodingKey {
         case id, userId, title, body
     }
+    
 }

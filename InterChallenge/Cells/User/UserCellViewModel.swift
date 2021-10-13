@@ -1,13 +1,7 @@
-//
-//  UserViewModel.swift
-//  InterChallenge
-//
-//  Created by Wilton Ramos on 07/10/21.
-//
-
 import Foundation
 
-public class UserViewModel {
+public class UserCellViewModel {
+    
     let id: Int
     let initialsLabel: String
     let nameLabel: String

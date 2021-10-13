@@ -1,6 +1,7 @@
 import Foundation
 
 struct User: Codable {
+    
     let id: Int
     let name: String
     let username: String
@@ -10,4 +11,5 @@ struct User: Codable {
     enum CodingKeys: String, CodingKey {
         case id, name, username, email, phone
     }
+    
 }
