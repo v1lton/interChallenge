@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		893A7FE0271091F60038EE78 /* AlbumCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893A7FDF271091F60038EE78 /* AlbumCellViewModel.swift */; };
 		893A7FE2271092080038EE78 /* PhotoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893A7FE1271092080038EE78 /* PhotoCellViewModel.swift */; };
-		898B004A271212710017D248 /* TableViewRowNavigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B0049271212710017D248 /* TableViewRowNavigable.swift */; };
+		898B004A271212710017D248 /* RowNavigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B0049271212710017D248 /* RowNavigable.swift */; };
 		898B0052271219020017D248 /* ViewConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B0051271219020017D248 /* ViewConstraints.swift */; };
 		89BF55412714596E004F7EF5 /* ChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF55402714596E004F7EF5 /* ChallengeViewModel.swift */; };
 		89BF554327145E30004F7EF5 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF554227145E30004F7EF5 /* Observable.swift */; };
@@ -134,7 +134,7 @@
 /* Begin PBXFileReference section */
 		893A7FDF271091F60038EE78 /* AlbumCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCellViewModel.swift; sourceTree = "<group>"; };
 		893A7FE1271092080038EE78 /* PhotoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellViewModel.swift; sourceTree = "<group>"; };
-		898B0049271212710017D248 /* TableViewRowNavigable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewRowNavigable.swift; sourceTree = "<group>"; };
+		898B0049271212710017D248 /* RowNavigable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowNavigable.swift; sourceTree = "<group>"; };
 		898B0051271219020017D248 /* ViewConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstraints.swift; sourceTree = "<group>"; };
 		89BF55402714596E004F7EF5 /* ChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModel.swift; sourceTree = "<group>"; };
 		89BF554227145E30004F7EF5 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -282,11 +282,7 @@
 		89BF55622714CDC2004F7EF5 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				89BF555C2714B80E004F7EF5 /* TableViewCompatible.swift */,
-				898B0049271212710017D248 /* TableViewRowNavigable.swift */,
-				89BF5554271481E4004F7EF5 /* TitleAndDescription.swift */,
 				898B0051271219020017D248 /* ViewConstraints.swift */,
-				89BF555E2714BBCE004F7EF5 /* Binding.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -332,6 +328,7 @@
 				BA0CF8DD263358E5007BDFC8 /* Comment.swift */,
 				BA0CF8EE26336B59007BDFC8 /* Album.swift */,
 				BA0CF8FD26337023007BDFC8 /* Photo.swift */,
+				89BF5554271481E4004F7EF5 /* TitleAndDescription.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -411,6 +408,9 @@
 			children = (
 				89BF55602714CD73004F7EF5 /* Coordinator */,
 				BA0CF8C626334817007BDFC8 /* View Controllers */,
+				89BF555C2714B80E004F7EF5 /* TableViewCompatible.swift */,
+				898B0049271212710017D248 /* RowNavigable.swift */,
+				89BF555E2714BBCE004F7EF5 /* Binding.swift */,
 				BA0CF8BF2632F7CD007BDFC8 /* Models */,
 				BA0CF8B62632F552007BDFC8 /* Cells */,
 				89BF55622714CDC2004F7EF5 /* Protocols */,
@@ -645,7 +645,7 @@
 				BA0CF8D626334FF0007BDFC8 /* CommentTableViewController.swift in Sources */,
 				BA0CF8E426336A9A007BDFC8 /* AlbumTableViewCell.swift in Sources */,
 				BA0CF8FA26336FEB007BDFC8 /* PhotoTableViewController.swift in Sources */,
-				898B004A271212710017D248 /* TableViewRowNavigable.swift in Sources */,
+				898B004A271212710017D248 /* RowNavigable.swift in Sources */,
 				89BF55412714596E004F7EF5 /* ChallengeViewModel.swift in Sources */,
 				89BF554327145E30004F7EF5 /* Observable.swift in Sources */,
 				BA0CF9022633764E007BDFC8 /* DetailsViewController.swift in Sources */,

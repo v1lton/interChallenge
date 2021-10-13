@@ -68,7 +68,7 @@ class PostTableViewController: UITableViewController, Binding {
     
 }
 
-extension PostTableViewController: TableViewRowNavigable {
+extension PostTableViewController: RowNavigable {
     
     func didTapCell(with postId: Int, by userName: String) {
         self.coordinator?.showComments(with: postId, by: userName)

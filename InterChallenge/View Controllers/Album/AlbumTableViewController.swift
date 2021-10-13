@@ -68,7 +68,7 @@ class AlbumTableViewController: UITableViewController, Binding {
     
 }
 
-extension AlbumTableViewController: TableViewRowNavigable {
+extension AlbumTableViewController: RowNavigable {
     
     func didTapCell(with albumId: Int, by userName: String) {
         self.coordinator?.showPhotos(with: albumId, by: userName)
